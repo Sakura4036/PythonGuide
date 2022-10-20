@@ -1,19 +1,19 @@
 MD007:
-  indent: 4
+  indent: 4 # 指定无序列表嵌套时缩进的空格数，默认是 2
   start_indented: false
 
 MD013:
-  line_length: 200
-  heading_line_length: 80
+  line_length: 200 # 指定行的最大长度，默认是 80
+  heading_line_length: 80 # 指定标题行的最大长度，默认是 80
   code_block_line_length: 200
-  code_blocks: true
-  tables: true
-  headings: true
+  code_blocks: true # 指定规则是否 (true or false) 对代码块生效，默认 true
+  tables: true # 指定规则是否 (true or false) 对表格生效，默认 true
+  headings: true # 指定规则是否 (true or false) 对标题生效，默认 true
   headers: true
   strict: false
   stern: false
 
 MD012:
-  maximum: 20
+  maximum: 20 # 指定文档中可以连续的最多空行数，默认值是 1
 
-MD046: false
+MD046: false # 整篇文档采用一致的定义代码块格式
