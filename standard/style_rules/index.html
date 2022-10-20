@@ -1,0 +1,1490 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/standard/style_rules/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>风格规范 - PythonGuide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#02a6f2">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PythonGuide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              风格规范
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sakura4036/PythonGuide" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sakura4036/PythonGuide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      主页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../guidelines/project_structure/" class="md-tabs__link">
+        项目开发
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../language_rules/" class="md-tabs__link md-tabs__link--active">
+        Python规范
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../git/" class="md-tabs__link">
+      Git版本控制
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../reference/" class="md-tabs__link">
+      参考目录
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    PythonGuide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sakura4036/PythonGuide" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sakura4036/PythonGuide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          项目开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="项目开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          项目开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/project_structure/" class="md-nav__link">
+        项目结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/logging/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/configuration/" class="md-nav__link">
+        配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/document/" class="md-nav__link">
+        文档管理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          进阶
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="进阶" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          进阶
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/code_lint/" class="md-nav__link">
+        代码检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/program_design/" class="md-nav__link">
+        设计模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guidelines/code_refactor/" class="md-nav__link">
+        代码重构
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Python规范
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python规范" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python规范
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language_rules/" class="md-nav__link">
+        语言规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          风格规范
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        风格规范
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    行长度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    括号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    缩进
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    序列元素尾部逗号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    空行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    注释
+  </a>
+  
+    <nav class="md-nav" aria-label="注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__doc__" class="md-nav__link">
+    文档字符串（__doc__）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    函数与方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    类注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    块注释与行注释
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    类型注释
+  </a>
+  
+    <nav class="md-nav" aria-label="类型注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    通用规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    换行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    参数默认值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    可选参数类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    忽略类型注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    变量类型注解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    泛型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    TODO注释
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    命名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    代码风格检测
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        Git版本控制
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        参考目录
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    行长度
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    括号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    缩进
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    序列元素尾部逗号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    空行
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    注释
+  </a>
+  
+    <nav class="md-nav" aria-label="注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__doc__" class="md-nav__link">
+    文档字符串（__doc__）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    函数与方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    类注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    块注释与行注释
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    类型注释
+  </a>
+  
+    <nav class="md-nav" aria-label="类型注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    通用规则
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    换行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    参数默认值
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    可选参数类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    忽略类型注释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    变量类型注解
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    泛型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    TODO注释
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    命名
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    代码风格检测
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/Sakura4036/PythonGuide/edit/master/docs/standard/style_rules.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="_1">风格规范<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>参考：<a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/">Python 风格规范</a></p>
+<h2 id="_2">行长度<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>一行代码的长度默认不超过80个字符（含空格）。由于现在显示器更大的尺寸和更高的像素，这个规范有点过时，因此一行不超过120个字符也是可以接受的。</p>
+<p>以下场景是例外：</p>
+<ol>
+<li>长的<code>import</code> 语句，例如从某一模块中调用多个函数等</li>
+<li>注释中的URL， 文件路径，或一些特定的长Token</li>
+<li>不便于换行，不包含空格的模块级字符串常量，比如URL或者路径</li>
+</ol>
+<p>Python会将**圆括号、中括号和花括号**中的行**隐式地连接**起来：
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">design</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+        <span class="n">emphasis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+ <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;This will build a very long long &#39;</span>
+     <span class="s1">&#39;long long long long long long string&#39;</span><span class="p">)</span>
+
+<span class="c1"># http://www.example.com/us/developer/documentation/api/content/v2.0/csv_file_name_extension_full_specification.html</span>
+</code></pre></div></p>
+<h2 id="_3">括号<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>宁缺毋滥的使用括号。
+除非是用于实现行连接或者元组， 否则不要在返回语句或条件语句中使用括号。</p>
+<p><strong>Good</strong>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">y</span><span class="p">:</span>
+
+<span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">return</span> <span class="n">spam</span><span class="p">,</span> <span class="n">beans</span>  <span class="c1"># 返回2个对象</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">spam</span><span class="p">,</span> <span class="n">beans</span><span class="p">)</span>  <span class="c1"># 返回1个元组 </span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;This will build a very long long &#39;</span>
+     <span class="s1">&#39;long long long long long long string&#39;</span><span class="p">)</span>
+</code></pre></div>
+<strong>Bad</strong>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">return</span> <span class="p">(</span><span class="n">foo</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="_4">缩进<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li>用4个空格来缩进代码</li>
+<li>除非在IDE中，否则不要使用Tab</li>
+<li>也不要Tab和空格混用</li>
+<li>多行时，注意换行垂直对齐</li>
+</ul>
+<p><strong>Good</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Aligned with opening delimiter</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span><span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+                         <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+
+<span class="c1"># Aligned with opening delimiter in a dictionary</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">long_dictionary_key</span><span class="p">:</span> <span class="n">value1</span> <span class="o">+</span>
+                         <span class="n">value2</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="c1"># 4-space hanging indent in a dictionary</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">long_dictionary_key</span><span class="p">:</span>
+        <span class="n">long_dictionary_value</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Bad</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Stuff on first line forbidden</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span><span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+    <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+
+<span class="c1"># No hanging indent in a dictionary</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">long_dictionary_key</span><span class="p">:</span>
+    <span class="n">long_dictionary_value</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="_5">序列元素尾部逗号<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>仅当 <code>]</code>, <code>)</code>, <code>}</code> 和末位元素不在同一行时，推荐使用序列元素尾部逗号. 当末位元素尾部有逗号时，元素后的逗号可以指示 <a href="https://pypi.org/project/yapf/">YAPF</a> 将序列格式化为每行一项。</p>
+<p><strong>Good</strong>
+<div class="highlight"><pre><span></span><code><span class="n">golomb4</span> <span class="o">=</span> <span class="p">[</span>  
+    <span class="mi">0</span><span class="p">,</span>  
+    <span class="mi">4</span><span class="p">,</span>  
+    <span class="mi">6</span><span class="p">,</span>  
+<span class="p">]</span>
+</code></pre></div></p>
+<p><strong>Bad</strong>
+<div class="highlight"><pre><span></span><code><span class="n">golomb4</span> <span class="o">=</span> <span class="p">[</span>  
+    <span class="mi">0</span><span class="p">,</span>  
+    <span class="mi">4</span><span class="p">,</span>  
+    <span class="mi">6</span> 
+<span class="p">]</span>
+</code></pre></div></p>
+<h2 id="_6">空行<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>顶级定义之间空两行</li>
+<li>类方法定义之间空一行</li>
+<li>函数或方法中，某些地方要是你觉得合适，就空一行</li>
+</ul>
+<h2 id="_7">注释<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="__doc__">文档字符串（<code>__doc__</code>）<a class="headerlink" href="#__doc__" title="Permanent link">&para;</a></h3>
+<p>Python有一种独一无二的的注释方式：使用文档字符串。文档字符串是包，模块，类或函数里的第一个语句。这些字符串可以通过对象的 <code>__doc__</code> 成员被自动提取，并且被pydoc所用。(你可以在你的模块上运行pydoc试一把，看看它长什么样)。我们对文档字符串的惯例是使用三重双引号”””( <a href="http://www.python.org/dev/peps/pep-0257/">PEP-257</a> )。 </p>
+<p>一个文档字符串应该这样组织：首先是一行以句号，问号或惊叹号结尾的概述(或者该文档字符串单纯只有一行)。接着是一个空行。接着是文档字符串剩下的部分，它应该与文档字符串的第一行的第一个引号对齐。</p>
+<h3 id="_8">模块<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>每个文件应该包含一个许可样板，根据项目使用的许可(例如，Apache 2.0，BSD，LGPL，GPL), 选择合适的样板。其开头应是对模块内容和用法的描述。多见于开源仓库。</p>
+<h3 id="_9">函数与方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>下文所指的函数，包括函数，方法，以及生成器。</p>
+<p>一个函数必须要有文档字符串，除非它满足以下条件:
+ 1. 外部不可见
+ 2.  非常短小
+ 3.  简单明了</p>
+<p>文档字符串应该包含函数做什么，以及输入和输出的详细描述。通常，不应该描述“怎么做”或者实现细节，除非是一些复杂的算法。对于复杂的代码，在代码旁边加注释会比使用文档字符串更有意义。
+覆盖基类的子类方法应有一个类似 <code>See base class</code> 的简单注释来指引读者到基类方法的文档注释。若重载的子类方法和基类方法有很大不同，那么注释中应该指明这些信息。</p>
+<p>关于函数的几个方面应该在特定的小节中进行描述记录，这几个方面如下文所述。每节应该以一个标题行开始。标题行以冒号结尾。除标题行外，节的其他内容应被缩进2个空格。</p>
+<p><strong>Args:</strong></p>
+<p>列出每个参数的名字, 并在名字后使用一个冒号和一个空格, 分隔对该参数的描述.如果描述太长超过了单行最大长度（<code>80</code>或者自定义）字符数，使用2或者4个空格的悬挂缩进(与文件其他部分保持一致)。
+描述应该包括所需的类型和含义。如果一个函数接受<code>*args</code>(可变长度参数列表)或者<code>**kwargs</code> (任意关键字参数), 应该详细列出<code>*args</code>和<code>**kwargs</code>。</p>
+<p><strong>Returns: (或者 Yields: 用于生成器)</strong></p>
+<p>描述返回值的类型和语义. 如果函数返回None, 这一部分可以省略.</p>
+<p><strong>Raises:</strong></p>
+<p>列出与接口有关的所有异常.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fetch_smalltable_rows</span><span class="p">(</span><span class="n">table_handle</span><span class="p">:</span> <span class="n">smalltable</span><span class="o">.</span><span class="n">Table</span><span class="p">,</span>
+                          <span class="n">keys</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">]],</span>
+                          <span class="n">require_all_keys</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Fetches rows from a Smalltable.</span>
+
+<span class="sd">    Retrieves rows pertaining to the given keys from the Table instance</span>
+<span class="sd">    represented by table_handle.  String keys will be UTF-8 encoded.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table_handle: An open smalltable.Table instance.</span>
+<span class="sd">        keys: A sequence of strings representing the key of each table</span>
+<span class="sd">        row to fetch.  String keys will be UTF-8 encoded.</span>
+<span class="sd">        require_all_keys: Optional; If require_all_keys is True only</span>
+<span class="sd">        rows with values set for all keys will be returned.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A dict mapping keys to the corresponding table row data</span>
+<span class="sd">        fetched. Each row is represented as a tuple of strings. For</span>
+<span class="sd">        example:</span>
+
+<span class="sd">        {b&#39;Serak&#39;: (&#39;Rigel VII&#39;, &#39;Preparer&#39;),</span>
+<span class="sd">        b&#39;Zim&#39;: (&#39;Irk&#39;, &#39;Invader&#39;),</span>
+<span class="sd">        b&#39;Lrrr&#39;: (&#39;Omicron Persei 8&#39;, &#39;Emperor&#39;)}</span>
+
+<span class="sd">        Returned keys are always bytes.  If a key from the keys argument is</span>
+<span class="sd">        missing from the dictionary, then that row was not found in the</span>
+<span class="sd">        table (and require_all_keys must have been False).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        IOError: An error occurred accessing the smalltable.</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+</code></pre></div>
+<h3 id="_10">类注释<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>类应该在其定义下有一个用于描述该类的文档字符串。如果你的类有公共属性(Attributes)，那么文档中应该有一个属性(Attributes)段。并且应该遵守和函数参数相同的格式。
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SampleClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Summary of class here.</span>
+
+<span class="sd">     Longer class information....</span>
+<span class="sd">     Longer class information....</span>
+
+<span class="sd">     Attributes:</span>
+<span class="sd">     likes_spam: A boolean indicating if we like SPAM or not.</span>
+<span class="sd">     eggs: An integer count of the eggs we have laid.</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">likes_spam</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Inits SampleClass with blah.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">likes_spam</span> <span class="o">=</span> <span class="n">likes_spam</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eggs</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">public_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Performs operation blah.&quot;&quot;&quot;</span>
+        <span class="o">...</span>
+</code></pre></div></p>
+<h3 id="_11">块注释与行注释<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>最需要写注释的是代码中那些技巧性的部分。如果你在下次 <a href="http://en.wikipedia.org/wiki/Code_review">代码审查</a> 的时候必须解释一下，那么你应该现在就给它写注释。对于复杂的操作，应该在其操作开始前写上若干行注释， 多行注释可以使用<code>"""..."""</code>。对于不是一目了然的代码，应在其行尾添加注释。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># We use a weighted dictionary search to find out where i is in</span>
+<span class="c1"># the array.  We extrapolate position based on the largest num</span>
+<span class="c1"># in the array and the array size and then do binary search to</span>
+<span class="c1"># get the exact number.</span>
+
+<span class="k">if</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># True if i is 0 or a power of 2</span>
+</code></pre></div>
+<p>为了提高可读性，注释应该至少离开代码2个空格。</p>
+<p>另一方面，绝不要描述代码。假设阅读代码的人比你更懂Python，他只是不知道你的代码要做什么。
+<div class="highlight"><pre><span></span><code><span class="c1"># BAD COMMENT</span>
+<span class="c1"># Now go through the b array and make sure whenever i occurs</span>
+<span class="c1"># the next element is i+1</span>
+</code></pre></div></p>
+<h2 id="_12">类型注释<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13"><strong>通用规则</strong><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ol>
+<li>请先熟悉下 <a href="https://www.python.org/dev/peps/pep-0484/">PEP-484 </a></li>
+<li>对于方法，仅在必要时才对  <code>self</code>  或  <code>cls</code>  注释</li>
+<li>若对类型没有任何显示，请使用  <code>Any</code></li>
+<li>无需注释模块中的所有函数<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>1.  公共的API需要注释
+2.  在代码的安全性，清晰性和灵活性上进行权衡是否注释
+3.  对于容易出现类型相关的错误的代码进行注释
+4.  难以理解的代码请进行注释
+5.  若代码中的类型已经稳定，可以进行注释. 对于一份成熟的代码，多数情况下，即使注释了所有的函数，也不会丧失太多的灵活性。
+</code></pre></div></td></tr></table></div>
+
+</li>
+</ol>
+<h3 id="_14"><strong>换行</strong><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>尽量遵守既定的缩进规则。注释后，很多函数签名将会变成每行一个参数。
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+              <span class="n">first_var</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+              <span class="n">second_var</span><span class="p">:</span> <span class="n">Foo</span><span class="p">,</span>
+              <span class="n">third_var</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Bar</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+尽量在变量之间换行而不是在变量和类型注释之间.当然,若所有东西都在一行上,也可以接受
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_var</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+若是函数名,末位形参和返回值的类型注释太长,也可以进行换行,并在新行进行4格缩进.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">first_var</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">MyLongType1</span><span class="p">,</span> <span class="n">MyLongType1</span><span class="p">]:</span>
+    <span class="o">...</span>
+</code></pre></div>
+若是末位形参和返回值类型注释不适合在同一行上,可以换行,缩进为4空格,并保持闭合的括号 <code>)</code> 和 <code>def</code> 对齐
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">other_arg</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">MyLongType</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">OtherLongType</span><span class="p">,</span> <span class="n">MyLongType</span><span class="p">]:</span>
+    <span class="o">...</span>
+</code></pre></div>
+尽量不要在一个类型注释中进行换行.但是有时类型注释过长需要换行时,请尽量保持子类型中不被换行.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_method</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">first_var</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">MyLongType1</span><span class="p">],</span>
+                     <span class="n">List</span><span class="p">[</span><span class="n">MyLongType2</span><span class="p">]],</span>
+    <span class="n">second_var</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span>
+        <span class="n">MyLongType3</span><span class="p">,</span> <span class="n">MyLongType4</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div></p>
+<h3 id="_15"><strong>参数默认值</strong><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>依据 <a href="https://www.python.org/dev/peps/pep-0008/#other-recommendations">PEP-008</a> ,仅对同时具有类型注释和默认值的参数的 <code>=</code> 周围加空格。
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="o">...</span>
+
+<span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div></p>
+<h3 id="_16"><strong>可选参数类型</strong><a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>在python的类型系统中, <code>NoneType</code> 是 “一等对象”，为了输入方便，<code>None</code> 是 <code>NoneType</code> 的别名。一个变量若是 <code>None</code>，则该变量必须被声明。
+因为python中函数参数可以是任何类型，若没有特殊声明则默认为<code>Any</code>类型。若函数参数有多个类型，我们可以使用 <code>typing</code>模块中的<code>Union</code>，但若类型仅仅只是对应另一个其他类型，建议使用 <code>Optional</code>。</p>
+<p>尽量显式而非隐式的使用 <code>Optional</code>。在PEP-484的早期版本中允许使用 <code>a: Text = None</code> 来替代 <code>a: Optional[Text] = None</code>，当然,现在不推荐这么做了.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Text</span><span class="p">],</span> <span class="n">b</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Text</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Text</span><span class="p">:</span>
+    <span class="o">...</span>
+<span class="k">def</span> <span class="nf">multiple_nullable_union</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Text</span>
+    <span class="o">...</span>
+
+<span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">nullable_union</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Text</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Text</span><span class="p">:</span>
+    <span class="o">...</span>
+<span class="k">def</span> <span class="nf">implicit_optional</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Text</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Text</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h3 id="_17"><strong>忽略类型注释</strong><a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>可以使用特殊的行尾注释 <code># type: ignore</code> 来禁用该行的类型检查. <code>pytype</code> 针对特定错误有一个禁用选项(类似lint):
+<div class="highlight"><pre><span></span><code><span class="c1"># pytype: disable=attribute-error</span>
+</code></pre></div></p>
+<h3 id="_18"><strong>变量类型注解</strong><a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>当一个内部变量难以推断其类型时,可以有以下方法来指示其类型:</p>
+<ul>
+<li>使用行尾注释 <code># type:</code>:
+    <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">SomeUndecoratedFunction</span><span class="p">()</span>  <span class="c1"># type: Foo</span>
+</code></pre></div></li>
+<li><strong>带类型注解的复制</strong> 如函数形参一样,在变量名和等号间加入冒号和类型:
+    <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">:</span> <span class="n">Foo</span> <span class="o">=</span> <span class="n">SomeUndecoratedFunction</span><span class="p">()</span>
+</code></pre></div></li>
+</ul>
+<h3 id="_19"><strong>泛型</strong><a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>在注释时,尽量将泛型类型注释为类型参数.否则, 泛型参数将被视为是 <a href="https://www.python.org/dev/peps/pep-0484/#the-any-type">Any</a> .
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">get_names</span><span class="p">(</span><span class="n">employee_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="o">...</span>
+
+<span class="c1"># bad</span>
+<span class="c1"># These are both interpreted as get_names(employee_ids: List[Any]) -&gt; Dict[Any, Any]</span>
+<span class="k">def</span> <span class="nf">get_names</span><span class="p">(</span><span class="n">employee_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+若实在要用 Any 作为泛型类型,请显式的使用它。但在多数情况下, <code>TypeVar</code> 通常可能是更好的选择.
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_names</span><span class="p">(</span><span class="n">employee_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Text</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a mapping from employee ID to employee name for given IDs.&quot;&quot;&quot;</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_names</span><span class="p">(</span><span class="n">employee_ids</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">T</span><span class="p">,</span> <span class="n">Text</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Returns a mapping from employee ID to employee name for given IDs.&quot;&quot;&quot;</span>
+</code></pre></div></p>
+<p><strong>特殊类型</strong>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Example&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+
+<span class="k">class</span> <span class="nc">BaseTask</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;base Task&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Run task&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Stop task&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+
+<span class="k">class</span> <span class="nc">FileTask</span><span class="p">(</span><span class="n">BaseTask</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;File task&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">NetworkTask</span><span class="p">(</span><span class="n">BaseTask</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Network task&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="n">KwargsType</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+<span class="n">ArgsType</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_in_executor</span><span class="p">(</span>
+        <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="n">args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArgsType</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+        <span class="n">kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">KwargsType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Wrap a func in a threading executor &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">loop</span><span class="o">.</span><span class="n">run_in_executor</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">task_runner</span><span class="p">(</span><span class="n">task_kls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseTask</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Task runner&quot;&quot;&quot;</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">task_kls</span><span class="p">()</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">run_in_executor</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">run</span><span class="p">))</span>
+</code></pre></div>
+在  <code>run_in_executor</code>  方法中使用了  <code>typing.Callable</code>  、  <code>typing.Optional</code>  、  <code>typing.Any</code>  特殊类型。</p>
+<p>在  <code>task_runner</code>  中使用  <code>typing.Type</code>  类型，表明  <code>task_kls</code>  参数是一个  <code>BaseTask</code>  类自身， 而不是它的对象，准确说是它的类对象。由于<code>FileTask</code>，<code>NetworkTask</code>，继承自<code>BaseTask</code>  类，因此这3个类的对象实例都可以传入作为<code>task_runner</code>的参数。</p>
+<h2 id="todo">TODO注释<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h2>
+<p><code>TODO</code>一般是为了暂时还未完成的代码作一个简单的提醒，可以是自己也可以是其他开发者。为临时代码使用<code>TODO</code>注释，它是一种短期解决方案。不算完美，但够好了。
+<code>TODO</code>注释应该在所有开头处包含<code>TODO</code>字符串，紧跟着是用括号括起来的你的名字，email地址或其它标识符。然后是一个可选的冒号。接着必须有一行注释，解释要做什么。主要目的是为了有一个统一的<code>TODO</code>格式，这样添加注释的人就可以搜索到(并可以按需提供更多细节)。写了<code>TODO</code>注释并不保证写的人会亲自解决问题。当你写了一个<code>TODO</code>，请注上你的名字。
+<div class="highlight"><pre><span></span><code><span class="c1"># TODO(kl@gmail.com): Use a &quot;*&quot; here for string repetition.</span>
+<span class="c1"># TODO(Zeke) Change this to use relations.</span>
+</code></pre></div>
+如果你的<code>TODO</code>是”将来做某事”的形式，那么请确保你包含了一个指定的日期(“2009年11月解决”)或者一个特定的事件(“等到所有的客户都可以处理XML请求就移除这些代码”)。</p>
+<h2 id="_20">命名<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<ul>
+<li>包名：<code>package_name</code></li>
+<li>模块名：<code>module_name</code></li>
+<li>类名：<code>ClassName</code></li>
+<li>方法名：<code>method_name</code></li>
+<li>类名：<code>ExceptionName</code></li>
+<li>函数名: <code>function_name</code></li>
+<li>全局常量名: <code>GLOBAL_CONSTANT_NAME</code></li>
+<li>全局变量名: <code>global_var_name</code></li>
+<li>实例名: <code>instance_var_name</code></li>
+<li>函数参数名: <code>function_parameter_name</code></li>
+<li>局部变量名: <code>local_var_name</code></li>
+</ul>
+<p><strong>函数名</strong>、<strong>变量名**和**文件名**应该是描述性的，尽量**避免缩写</strong>，特别要避免使用非项目人员不清楚难以理解的缩写，不要通过删除单词中的字母来进行缩写。</p>
+<p><strong>命名约定</strong></p>
+<ul>
+<li>使用单下划线<code>_</code>开头表示模块变量或者函数是<code>protected</code>的，即只应该模块内或者函数内使用（硬是访问的话也是可以的），不应该被公开访问，而且python解析时使用<code>from module import *</code>时该变量或函数不会被包含。</li>
+<li>用双下划线(<code>__</code>)开头的实例变量或方法表示类内私有。即只应该模块内或者函数内使用，不应该被公开访问。使用<code>module.var</code>与<code>class.var</code>会报错（<code>该属性不存在</code>），不能访问（可以使用_class__var访问， 具体可以查看相关文档）。</li>
+<li>将相关的类和顶级函数放在同一个模块里。不像Java，没必要限制一个类一个模块。</li>
+<li>对类名使用大写字母开头的单词(如CapWords，即Pascal风格)，但是模块名应该用小写加下划线的方式(如lower_with_under.py)。因为如果模块名碰巧和类名一致, 这会让人困扰。</li>
+</ul>
+<h2 id="_21">代码风格检测<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<p>为了让开发风格达到统一，使用代码格式化工具检测。</p>
+<p>使用  <code>isort</code>  将导包部分格式化为统一格式，使用  <code>pylint</code>  检测代码是否符合 <code>PEP-8</code> 规范，同时还能检测 一些不标准的的语法，并给出修改建议。</p>
+<p>执行  <code>isort . --check-only --diff</code>  检测代码风格，并仅输出不符合规范的导包，执行  <code>isort</code>  会自动格式化代码。</p>
+<p>运行  <code>pylint src tests</code>  检查  <code>src</code>  目录和  <code>tests</code>  目录下的 Python 代码。会输出不符合规范的内容，然后 根据建议修改即可。</p>
+<p>Pycharm等IDE都存在一键自动格式化代码的功能。例如在Pycharm中使用<code>Ctrl+Alt+L</code>快捷键或者
+使用鼠标选定不规范（~提示）的地方，使用<code>Alt+Shift+Enter</code>快捷键一键格式化。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../language_rules/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 语言规范" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              语言规范
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../git/" class="md-footer__link md-footer__link--next" aria-label="下一页: Git版本控制" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Git版本控制
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>

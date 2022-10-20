@@ -1,0 +1,1230 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/guidelines/project_structure/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>项目结构 - PythonGuide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#02a6f2">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PythonGuide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              项目结构
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sakura4036/PythonGuide" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sakura4036/PythonGuide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      主页
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        项目开发
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../standard/language_rules/" class="md-tabs__link">
+        Python规范
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../git/" class="md-tabs__link">
+      Git版本控制
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../reference/" class="md-tabs__link">
+      参考目录
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    PythonGuide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sakura4036/PythonGuide" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sakura4036/PythonGuide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          项目开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="项目开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          项目开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="基础" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          项目结构
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        项目结构
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    前言
+  </a>
+  
+    <nav class="md-nav" aria-label="前言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    结构是一把钥匙
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    工程结构
+  </a>
+  
+    <nav class="md-nav" aria-label="工程结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    简单结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    src 结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    README
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt" class="md-nav__link">
+    requirements.txt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    模块
+  </a>
+  
+    <nav class="md-nav" aria-label="模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    常见模块
+  </a>
+  
+    <nav class="md-nav" aria-label="常见模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utils" class="md-nav__link">
+    utils
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configs-settings-options" class="md-nav__link">
+    configs &amp; settings &amp; options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logging/" class="md-nav__link">
+        日志
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../document/" class="md-nav__link">
+        文档管理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          进阶
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="进阶" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          进阶
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_lint/" class="md-nav__link">
+        代码检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_design/" class="md-nav__link">
+        设计模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code_refactor/" class="md-nav__link">
+        代码重构
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Python规范
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Python规范" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Python规范
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/language_rules/" class="md-nav__link">
+        语言规范
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../standard/style_rules/" class="md-nav__link">
+        风格规范
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        Git版本控制
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        参考目录
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    前言
+  </a>
+  
+    <nav class="md-nav" aria-label="前言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    结构是一把钥匙
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    工程结构
+  </a>
+  
+    <nav class="md-nav" aria-label="工程结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    简单结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    src 结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readme" class="md-nav__link">
+    README
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirementstxt" class="md-nav__link">
+    requirements.txt
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    模块
+  </a>
+  
+    <nav class="md-nav" aria-label="模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    常见模块
+  </a>
+  
+    <nav class="md-nav" aria-label="常见模块">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utils" class="md-nav__link">
+    utils
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configs-settings-options" class="md-nav__link">
+    configs &amp; settings &amp; options
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/Sakura4036/PythonGuide/edit/master/docs/guidelines/project_structure.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="_1">项目结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">前言<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>参考：</strong> <a href="https://pythonguidecn.readthedocs.io/zh/latest/writing/structure.html">Python最佳实践指南中文版</a></p>
+<p>“结构化”的定义是您关注于怎样使您的项目最好地满足它的对象性，我们需要去考虑如何更好地利用Python的特性来创造简洁、高效的代码。在实践层面，“结构化”意味着通过编写简洁的代码，并且正如文件系统中文件和目录的组织一样， 代码应该使逻辑和依赖清晰。</p>
+<p>在一个健康的开发周期中，代码风格，API设计和自动化是非常关键的。同样的，对于工程的架构、仓库的结构也是关键的一部分。</p>
+<p>当其他工程师查看或者接手您的工程（仓库）时，他们会看到这些:
+-   工程的名字
+-   工程的描述
+-   一系列的文件
+只有当他们滚动到目录下方时才会看到您工程（仓库）的README。</p>
+<p>如果您的工程（仓库）的目录是一团糟，没有清晰的结构，他们可能要到处寻找才能找到您写的漂亮的文档。</p>
+<p>样例：
+<div class="highlight"><pre><span></span><code>Sample
+├── LICENSE
+├── README.md
+├── setup.py
+├── requirements.txt
+├── example
+│   └── example.py
+│   └── __init__.py
+├── docs
+│   └── example.doc
+└── tests
+│   └── test_example.py
+</code></pre></div></p>
+<h3 id="_3">结构是一把钥匙<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>得益于Python提供的导入与管理模块的方式，结构化Python项目变得相对简单。 这里说的简单，指的是结构化过程没有太多约束限制而且模块导入功能容易掌握。 因而您只剩下架构性的工作，包括设计、实现项目各个模块，并整理清他们之间 的交互关系。</p>
+<p>容易结构化的项目同样意味着它的结构化容易做得糟糕。糟糕结构的特征包括：</p>
+<ul>
+<li>
+<p><strong>多重且混乱的循环依赖关系</strong>：例如，Student类中需要Teacher类，而同样的Teacher类需要引入Student类，这就是一种循环依赖。在这种情况下,您得借助一些不怎么靠谱的 小技巧，比如在方法或函数内部使用import语句。（<a href="https://www.codenong.com/s-python-circular-imports">参考解决办法</a>）</p>
+</li>
+<li>
+<p><strong>隐含耦合</strong>：由于Student类与Teacher类会相会影响，各自的改变都可能会引起对方的改变。这样的情况意味着 Teacher类代码中包含了太多关于Student类的假设关联（相反亦是如此）。在这种情况下，我们应该尽量将这两个类的关系进行解耦，例如添加一个课程类或者班级类来将两者联系起来。</p>
+</li>
+<li>
+<p><strong>大量使用全局变量或上下文</strong>：大量的使用可以被修改而且是能被不同引用或者对象修改的全局变量，而不是通过准确的传递<code>class</code>，<code>id</code>这样确切的变量，那出现bug的时候您就需要彻底检查全局变量的**所有入口**，来理解为啥会发生这样的情况：两个老师为啥会在同一个班级教同一门课。</p>
+</li>
+<li>
+<p><strong>面条式代码 (Spaghetti code)</strong>：多页嵌套的if语句与for循环，包含大量复制-粘贴 的过程代码，且没有合适的分割——这样的代码被称为面条式代码。Python中有意思 的缩进排版(最具争议的特性之一)使面条式代码很难维持，尤其是在纯文本编辑器中，如vim等。</p>
+</li>
+<li><strong>混沌代码</strong>：这类代码包含上百段相似的逻辑碎片，通常是缺乏 合适结构的类或对象。当你无法清晰定义1个类或者对象时，不知道是应该定义新的类还是继承原有的类、或者是否需要使用方法重载是，也许您已经陷入了混沌代码中。</li>
+</ul>
+<h2 id="_4">工程结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><strong>参考</strong>： <a href="https://pyloong.github.io/pythonic-project-guidelines/guidelines/project_management/project_structure/">Python 项目工程化开发指南</a></p>
+<h3 id="_5">简单结构<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>packaging_tutorial
+├── LICENSE
+├── README.md
+├── example_pkg
+│   └── __init__.py
+│   └── example.py
+├── setup.py
+└── tests
+</code></pre></div>
+项目结构以根目录开始，作为项目的环境。</p>
+<p>当有多个同级包时，它们都是扁平的散落在项目根目录。项目根目录下可能还存在其他非包目录，如 <code>data</code> 、 <code>docs</code> 等。如果需要本地引用第三方库，也需要放到根目录，但第三方包并不是项目的子包，而是它的一个引用。这样做会造成职责混乱。如下：
+<div class="highlight"><pre><span></span><code>tutorial
+├── LICENSE
+├── README.md
+├── data
+|   └── user.json
+├── docs
+│   └── history.md
+├── user
+│   └── __init__.py
+├── views
+│   └── __init__.py
+├── requests            # 这是需要本地打包的第三方包
+    └── request.py
+│   └── __init__.py
+├── setup.py
+└── tests
+</code></pre></div>
+当多个目录扁平的分布在项目根目录时，它们扮演者不同的功能，在开发上，会带了一定的混乱。而且在打包和测试上也会带来一些不便。</p>
+<p>在打包上，需要提供 <strong>更多的配置</strong> 排除不必要的目录，如  <code>docs</code>  或者其他不需要打包仅项目中的东西。</p>
+<p>当使用可编辑安装（  <code>pip install -e .</code>  ） 时，会将项目根目录中的所有东西安装到环境中，包括一些不需要的。</p>
+<h3 id="src">src 结构<a class="headerlink" href="#src" title="Permanent link">&para;</a></h3>
+<p>以下的src结构是社区逐渐遵守的一个标准。虽然社区中有大量老的项目依然采用简单布局，但新项目**推荐**使用 <code>src</code> 结构。如下面这个示例项目结构：
+<div class="highlight"><pre><span></span><code>sampleproject
+├── data
+│   └── user.json
+├── bin
+│   └── start.bat
+├── docs
+│   └── history.md
+├── setup.py
+├── src
+│   ├── requests
+│   │   └── __init__.py
+│   └── sample
+│       ├── __init__.py
+│       ├── user
+│       │   └── __init__.py
+│       └── views
+│           └── __init__.py
+│   ├── main.py
+├── tests
+│   ├── __init__.py
+│   ├── user
+│   │   └── __init__.py
+│   └── views
+│       └── __init__.py
+└── conf.ini
+└── settings.py
+</code></pre></div>
+项目的包结构很清晰，在环境中只需要引入 <code>src</code> 目录，就可以轻松导入项目源代码。通过 <code>pip install -e .</code> 可编辑安装，也只会安装 <code>src</code> 中的包。管理起来更加清晰。</p>
+<p><img alt="示例工程项目结构图" src="../../resources/images/example_project_structure.jpeg" title="示例工程项目结构图" /></p>
+<h3 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h3>
+<p>这应该是每个项目都应该有的一个文件，目的是能简要描述该项目的信息，让读者快速了解这个项目。
+它需要说明以下几个事项:</p>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code> 1. 软件定位，软件的基本功能。
+ 2. 运行代码的方法: 安装环境、启动命令等。
+ 3. 简要的使用说明。
+ 4. 代码目录结构说明，更详细点可以说明软件的基本原理。
+ 5. 常见问题说明。
+</code></pre></div></td></tr></table></div>
+
+<p>在软件开发初期，由于开发过程中以上内容可能不明确或者发生变化，并不是一定要在一开始就将所有信息都补全。但是在项目完结的时候，是需要撰写这样的一个文档的。</p>
+<h3 id="requirementstxt">requirements.txt<a class="headerlink" href="#requirementstxt" title="Permanent link">&para;</a></h3>
+<p>这个文件存在的目的是:
+方便开发者维护软件的包依赖。将开发过程中新增的包添加进这个列表中，避免在<code>setup.py</code>安装依赖时漏掉软件包。
+方便读者明确项目使用了哪些Python包。
+这个文件的格式是每一行包含一个包依赖的说明，通常是<code>numpy&gt;=2.20.1</code>这种格式，要求是这个格式能被<code>pip</code>识别，
+这样就可以简单的通过<code>pip install -r requirements.txt</code>来把所有Python包依赖都装好了。
+当然，你也可以使用<code>pip freeze &gt; requirements.txt</code>命令将你当前的环境所安装的包生成<code>requirements.txt</code>    <br />
+具体格式说明，请查看官方文档 <a href="https://pip.pypa.io/en/stable/cli/">Requirements</a>
+<div class="highlight"><pre><span></span><code>numpy &gt;= 2.20
+pandas 
+docopt == 0.6.1
+tqdm &gt;= 3.4, &lt;= 4.5
+...
+</code></pre></div></p>
+<h3 id="setup">setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
+<p>一般来说，用<code>setup.py</code>来管理代码的打包、安装、部署问题。业界标准的写法是用Python流行的打包工具<code>setuptools</code>来管理这些事情。
+这种方式普遍应用于开源项目中。不过这里的核心思想不是用标准化的工具来解决这些问题，而是说，
+一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。
+<code>setuptools</code>的文档比较庞大，刚接触的话，可能不太好找到切入点。学习技术的方式就是看他人是怎么用的，
+可以参考一下Python的一个Web框架<code>Flask</code>是如何写的: <a href="https://github.com/mitsuhiko/flask/blob/master/setup.py">Flask setup.py</a>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="c1"># Metadata goes in setup.cfg. These are here for GitHub&#39;s dependency graph.</span>
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Flask&quot;</span><span class="p">,</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Werkzeug &gt;= 2.2.2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Jinja2 &gt;= 3.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;itsdangerous &gt;= 2.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;click &gt;= 8.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;importlib-metadata &gt;= 3.6.0; python_version &lt; &#39;3.10&#39;&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">extras_require</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;async&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;asgiref &gt;= 3.2&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;dotenv&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python-dotenv&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<h2 id="_6">模块<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><strong>参考</strong>：<a href="https://pythonguidecn.readthedocs.io/zh/latest/writing/structure.html#id8">Python最佳实践指南--模块</a></p>
+<h3 id="_7">模块<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>Python模块是最主要的抽象层之一，并且很可能是最自然的一个。抽象层允许将代码分为 不同部分，每个部分包含相关的数据与功能。</p>
+<p>例如在项目中，一层控制用户操作相关接口，另一层处理底层数据操作。最自然分开这两 层的方式是，在一份文件里重组所有功能接口，并将所有底层操作封装到另一个文件中。 这种情况下，接口文件需要导入封装底层操作的文件，可通过  <code>import</code>  和  <code>from  ...  import</code>  语句完成。一旦您使用  import  语句，就可以使用这个模块。 既可以是内置的模块包括  <code>os</code>  和  <code>sys</code>，也可以是已经安装的第三方的模块，或者项目 内部的模块。</p>
+<p>为遵守风格指南中的规定，模块名称要短、使用小写，并避免使用特殊符号，比如点(.) 和问号(?)。如 <code>my.spam.py</code> 这样的名字是必须不能用的！该方式命名将妨碍 Python的模块查找功能。就<code>my.spam.py</code>来说，Python 认为需要在 <code>my</code> 文件夹 中找到 <code>spam.py</code> 文件，实际并不是这样。如果愿意您可以将模块命名为 <code>my_spam.py</code>， 不过并不推荐在模块名中使用下划线。但是，在模块名称中使用其他字符（空格或连字号） 将阻止导入（<code>-</code>是减法运算符），因此请尽量保持模块名称简单，以无需分开单词。 最重要的是，不要使用下划线命名空间，而是使用子模块。
+<div class="highlight"><pre><span></span><code><span class="c1"># OK</span>
+<span class="kn">import</span> <span class="nn">library.plugin.foo</span>
+<span class="c1"># not OK</span>
+<span class="kn">import</span> <span class="nn">library.foo_plugin</span>
+</code></pre></div></p>
+<p>除了以上的命名限制外，Python文件成为模块没有其他特殊的要求，但为了合理地使用这 个观念并避免问题，您需要理解import的原理机制。具体来说，<code>import  modu</code>  语句将 寻找合适的文件，即调用目录下的  <code>modu.py</code>  文件（如果该文件存在）。如果没有 找到这份文件，Python解释器递归地在 "PYTHONPATH" 环境变量中查找该文件，如果仍没 有找到，将抛出<code>ImportError</code>异常。</p>
+<p>一旦找到  <code>modu.py</code>，Python解释器将在隔离的作用域内执行这个模块。所有顶层 语句都会被执行，包括其他的引用。方法与类的定义将会存储到模块的字典中。然后，这个 模块的变量、方法和类通过命名空间暴露给调用方，这是Python中特别有用和强大的核心概念。</p>
+<p>也可以使用import语句的特殊形式 <code>from  modu  import  *</code> 模拟更标准的行为。但 <code>import  *</code> 通常 被认为是不好的做法。<strong>使用</strong>  <code>from  modu  import  *</code>  <strong>的代码较难阅读而且依赖独立性不足</strong>。 使用 <code>from  modu  import  func</code> 能精确定位您想导入的方法并将其放到全局命名空间中。 比 <code>from  modu  import  *</code> 要好些，因为它明确地指明往全局命名空间中导入了什么方法，它和 <code>import  modu</code> 相比唯一的优点是之后使用方法时可以少打点儿字。
+除了简单的单文件项目外，其他项目需要能够明确指出类和方法 的出处，例如使用 <code>modu.func</code> 语句，这将显著提升代码的可读性和易理解性。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="kn">from</span> <span class="nn">modu</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># sqrt是模块modu的一部分么？或是内建函数么？上文定义了么？</span>
+
+<span class="c1"># ok</span>
+<span class="kn">from</span> <span class="nn">modu</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 如果在import语句与这条语句之间，sqrt没有被重复定义，它也许是模块modu的一部分。</span>
+
+<span class="c1"># good</span>
+<span class="kn">import</span> <span class="nn">modu</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">modu</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># sqrt显然是属于模块modu的。</span>
+</code></pre></div>
+<h3 id="_8">包<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>Python提供非常简单的包管理系统，即简单地将模块管理机制扩展到一个目录上(目录扩展为包)。任意包含  <code>__init__.py</code>  文件的目录都被认为是一个Python包。导入一个包里不同 模块的方式和普通的导入模块方式相似，特别的地方是  <code>__init__.py</code>  文件将集合 所有包范围内的定义。</p>
+<p><code>pack/</code>  目录下的  <code>modu.py</code>  文件通过  <code>import  pack.modu</code>  语句导入。 该语句会在  <code>pack</code>  目录下寻找  <code>__init__.py</code>  文件，并执行其中所有顶层 语句。以上操作之后，<code>modu.py</code>  内定义的所有变量、方法和类在<code>pack.modu</code>命名空 间中均可看到。</p>
+<p>一个常见的问题是往  <code>__init__.py</code>  中加了过多代码，随着项目的复杂度增长， 目录结构越来越深，子包和更深嵌套的子包可能会出现。在这种情况下，导入多层嵌套 的子包中的某个部件需要执行所有通过路径里碰到的  <code>__init__.py</code>  文件。如果包内的模块和子包没有代码共享的需求，使用空白的  <code>__init__.py</code>  文件是正常 甚至好的做法。</p>
+<p>最后，导入深层嵌套的包可用这个方便的语法：<code>import very.deep.module as mod</code>。 该语法允许使用  mod  替代冗长的  <code>very.deep.module</code>。</p>
+<h2 id="_9">常见模块<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="utils">utils<a class="headerlink" href="#utils" title="Permanent link">&para;</a></h3>
+<p>utils模块，顾名思义，一般用于存放一些通用的工具函数，通过模块调用实现函数复用，减少代码重复，同时在主程序中隐藏程序细节。例如：<code>print_format(str)</code>，<code>print_time()</code>， <code>compute_date()</code>等等。</p>
+<p><strong>什么样的函数适合放在utils？</strong></p>
+<p><strong>工具类函数</strong>，只负责某一个特定的功能，且不依附于某一个特定的类或者对象。简而言之就是**独立的**，<strong>上下文无关的</strong>，输入输出格式与主程序中自定义的类和对象无关，否则应该写在对于的类模块中。</p>
+<p>例如,数据读取函数<code>load_dataset(filepath)</code>，该函数返回的格式必定与<code>dataset</code>需要的格式相关，无论返回的是一个<code>dataset</code>实例对象还是列表或者字典，一旦数据集定义发生变化，势必需要修改这个函数，因此这个函数应该从属与<code>dataset</code>，写在<code>dataset</code>模块中，而不是utils中。</p>
+<p>当utils模块中的函数很多时，或者你感到臃肿时，比如代码行数已经超过400行或者函数个数超过15个，这时候你应该考虑将其拆分成若干个这样的模块了。安装功能细分，将拆分的<code>a_utils.py</code>，<code>b_utils.py</code>封装在一个utils包，让后使用<code>from utils import a_utils</code>去调用这些函数。 </p>
+<p><strong>高阶技巧</strong>：使用utils包中的__init__模块将这些子模块中的函数都加载进来，然后像之前一样使用<code>import utils</code>去调用这些函数。<strong>但是不建议使用</strong>。</p>
+<h3 id="constants">constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
+<p>全局常量模块，用于存放整个包甚至整个项目工程的全局变量。例如：数据，日志等文件夹所在路径；特定的数据。</p>
+<p>虽然不建议将项目的启动配置参数也存放在这个模块当中，但是由于一些项目比较小，因此开发者会只使用1个全局常量模块来负责整个项目，一些项目的启动配置选项也存放其中。例如在一些深度学校开源项目经常可见：将模型运行参数都定义在constant中，如<code>batch_size</code>，<code>learning_rate</code>等等。</p>
+<h3 id="configs-settings-options">configs &amp; settings &amp; options<a class="headerlink" href="#configs-settings-options" title="Permanent link">&para;</a></h3>
+<p><strong>参考</strong>： <a href="https://www.zhihu.com/question/39827177">Configure some options in the settings</a></p>
+<p>程序所有的可变项叫做Settings。中文译作设置。所有的设置都是“可选项”，Option（选项，不是期权），因为在程序世界里没有真的开放式问题只有选择题（Option）。改变可选项的过程叫做Configure配置（动词）。</p>
+<p>configs与settings两者没有太大的区别，且不同框架、软件有的使用configs，有的使用settings，随项目而定。
+总而言之，项目设置、配置模块，一般用于系统全局环境的设置，例如数据库连接配置，服务器IP配置等等 。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 主页" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              主页
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../logging/" class="md-footer__link md-footer__link--next" aria-label="下一页: 日志" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              日志
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>
