@@ -1,6 +1,6 @@
 # Python项目开发指南
 
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Sakura4036/PythonGuide/gh-page/main?label=gh-page&logo=github&style=flat-square)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Sakura4036/PythonGuide/guide/main?style=flat-square)
 
 ## 文档目标
 
