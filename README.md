@@ -1,5 +1,7 @@
 # Python项目开发指南
 
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Sakura4036/PythonGuide/gh-page/main?label=gh-page&logo=github&style=flat-square)
+
 ## 文档目标
 
 以通俗易懂结构清晰的文档向读者展示如何做 Python 工程化
