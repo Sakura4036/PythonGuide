@@ -12,16 +12,16 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
-      - name: Lint Code Base
-        uses: github/super-linter@v4
-        env:
-          VALIDATE_MARKDOWN: true
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Lint Code Base
+#         uses: github/super-linter@v4
+#         env:
+#           VALIDATE_MARKDOWN: true
+#           VALIDATE_ALL_CODEBASE: false
+#           DEFAULT_BRANCH: main
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          LINTER_RULES_PATH: /
-          MARKDOWN_CONFIG_FILE: .markdownlint.yml
+#           LINTER_RULES_PATH: /
+#           MARKDOWN_CONFIG_FILE: .markdownlint.yml
 
   deploy:
     name: Deploy
