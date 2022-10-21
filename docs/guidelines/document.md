@@ -15,6 +15,7 @@ MkDocs有一堆很好看的主题。 官方内置了两个主题： _mkdocs_ 和
 
 - [MkDocs官网](https://www.mkdocs.org/)
 - [MkDocs官方中文文档](https://mkdocs.zimoapps.com/)
+- [MkDocs-Material](https://squidfunk.github.io/mkdocs-material/)
 
 特点：
 

@@ -8,3 +8,6 @@
  6. Python 官方日志 PEP-282 [https://peps.python.org/pep-0282/](https://peps.python.org/pep-0282/)
  7. Python 类型注释 PEP-484 [https://peps.python.org/pep-0484/](https://peps.python.org/pep-0484/)
  8. Python CookBook [https://python3-cookbook.readthedocs.io/zh_CN/latest/](https://python3-cookbook.readthedocs.io/zh_CN/latest/)
+ 9. [Python Design Patterns](https://python-patterns.guide/)
+ 10. [Git大全](https://gitee.com/all-about-git)
+ 11. [深入浅出Git教程](https://www.cnblogs.com/syp172654682/p/7689328.html)
