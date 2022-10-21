@@ -1014,9 +1014,9 @@
 </code></pre></div>
 当多个目录扁平的分布在项目根目录时，它们扮演者不同的功能，在开发上，会带了一定的混乱。而且在打包和测试上也会带来一些不便。</p>
 <p>在打包上，需要提供 <strong>更多的配置</strong> 排除不必要的目录，如  <code>docs</code>  或者其他不需要打包仅项目中的东西。</p>
-<p>当使用可编辑安装（  <code>pip install -e .</code>  ） 时，会将项目根目录中的所有东西安装到环境中，包括一些不需要的。</p>
+<p>当使用可编辑安装 <code>pip install -e .</code> 时，会将项目根目录中的所有东西安装到环境中，包括一些不需要的。</p>
 <h3 id="src">src 结构<a class="headerlink" href="#src" title="Permanent link">&para;</a></h3>
-<p>以下的src结构是社区逐渐遵守的一个标准。虽然社区中有大量老的项目依然采用简单布局，但新项目**推荐**使用 <code>src</code> 结构。如下面这个示例项目结构：
+<p>以下的src结构是社区逐渐遵守的一个标准。虽然社区中有大量老的项目依然采用简单布局，但新项目推荐使用 <code>src</code> 结构。如下面这个示例项目结构：
 <div class="highlight"><pre><span></span><code>sampleproject
 ├── data
 │   └── user.json
@@ -1049,26 +1049,22 @@
 <h3 id="readme">README<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h3>
 <p>这应该是每个项目都应该有的一个文件，目的是能简要描述该项目的信息，让读者快速了解这个项目。
 它需要说明以下几个事项:</p>
-<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code> 1. 软件定位，软件的基本功能。
- 2. 运行代码的方法: 安装环境、启动命令等。
- 3. 简要的使用说明。
- 4. 代码目录结构说明，更详细点可以说明软件的基本原理。
- 5. 常见问题说明。
-</code></pre></div></td></tr></table></div>
-
+<ol>
+<li>软件定位，软件的基本功能。</li>
+<li>运行代码的方法: 安装环境、启动命令等。</li>
+<li>简要的使用说明。</li>
+<li>代码目录结构说明，更详细点可以说明软件的基本原理。</li>
+<li>常见问题说明。</li>
+</ol>
 <p>在软件开发初期，由于开发过程中以上内容可能不明确或者发生变化，并不是一定要在一开始就将所有信息都补全。但是在项目完结的时候，是需要撰写这样的一个文档的。</p>
 <h3 id="requirementstxt">requirements.txt<a class="headerlink" href="#requirementstxt" title="Permanent link">&para;</a></h3>
 <p>这个文件存在的目的是:
-方便开发者维护软件的包依赖。将开发过程中新增的包添加进这个列表中，避免在<code>setup.py</code>安装依赖时漏掉软件包。
+方便开发者维护软件的包依赖。将开发过程中新增的包添加进这个列表中，避免在 <code>setup.py</code> 安装依赖时漏掉软件包。
 方便读者明确项目使用了哪些Python包。
-这个文件的格式是每一行包含一个包依赖的说明，通常是<code>numpy&gt;=2.20.1</code>这种格式，要求是这个格式能被<code>pip</code>识别，
-这样就可以简单的通过<code>pip install -r requirements.txt</code>来把所有Python包依赖都装好了。
-当然，你也可以使用<code>pip freeze &gt; requirements.txt</code>命令将你当前的环境所安装的包生成<code>requirements.txt</code>    <br />
-具体格式说明，请查看官方文档 <a href="https://pip.pypa.io/en/stable/cli/">Requirements</a>
+这个文件的格式是每一行包含一个包依赖的说明，通常是<code>numpy&gt;=2.20.1</code> 这种格式，要求是这个格式能被 <code>pip</code> 识别，
+这样就可以简单的通过 <code>pip install -r requirements.txt</code> 来把所有Python包依赖都装好了。
+当然，你也可以使用 <code>pip freeze &gt; requirements.txt</code> 命令将你当前的环境所安装的包生成 <code>requirements.txt</code>     <br />
+具体格式说明，请查看官方文档 <a href="https://pip.pypa.io/en/stable/cli/">requirements</a>。
 <div class="highlight"><pre><span></span><code>numpy &gt;= 2.20
 pandas 
 docopt == 0.6.1
@@ -1076,11 +1072,11 @@ tqdm &gt;= 3.4, &lt;= 4.5
 ...
 </code></pre></div></p>
 <h3 id="setup">setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
-<p>一般来说，用<code>setup.py</code>来管理代码的打包、安装、部署问题。业界标准的写法是用Python流行的打包工具<code>setuptools</code>来管理这些事情。
+<p>一般来说，用 <code>setup.py</code> 来管理代码的打包、安装、部署问题。业界标准的写法是用Python流行的打包工具<code>setuptools</code>来管理这些事情。
 这种方式普遍应用于开源项目中。不过这里的核心思想不是用标准化的工具来解决这些问题，而是说，
-一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。
-<code>setuptools</code>的文档比较庞大，刚接触的话，可能不太好找到切入点。学习技术的方式就是看他人是怎么用的，
-可以参考一下Python的一个Web框架<code>Flask</code>是如何写的: <a href="https://github.com/mitsuhiko/flask/blob/master/setup.py">Flask setup.py</a>
+一个项目一定要有一个安装部署工具，能快速便捷的在一台新机器上将环境装好、代码部署好和将程序运行起来。</p>
+<p><code>setuptools</code> 的文档比较庞大，刚接触的话，可能不太好找到切入点。学习技术的方式就是看他人是怎么用的，
+可以参考一下Python的一个Web框架<code>Flask</code>是如何写的: <a href="https://github.com/mitsuhiko/flask/blob/master/setup.py">Flask setup.py</a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
 
 <span class="c1"># Metadata goes in setup.cfg. These are here for GitHub&#39;s dependency graph.</span>
@@ -1098,19 +1094,19 @@ tqdm &gt;= 3.4, &lt;= 4.5
         <span class="s2">&quot;dotenv&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;python-dotenv&quot;</span><span class="p">],</span>
     <span class="p">},</span>
 <span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="_6">模块<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p><strong>参考</strong>：<a href="https://pythonguidecn.readthedocs.io/zh/latest/writing/structure.html#id8">Python最佳实践指南--模块</a></p>
 <h3 id="_7">模块<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Python模块是最主要的抽象层之一，并且很可能是最自然的一个。抽象层允许将代码分为 不同部分，每个部分包含相关的数据与功能。</p>
-<p>例如在项目中，一层控制用户操作相关接口，另一层处理底层数据操作。最自然分开这两 层的方式是，在一份文件里重组所有功能接口，并将所有底层操作封装到另一个文件中。 这种情况下，接口文件需要导入封装底层操作的文件，可通过  <code>import</code>  和  <code>from  ...  import</code>  语句完成。一旦您使用  import  语句，就可以使用这个模块。 既可以是内置的模块包括  <code>os</code>  和  <code>sys</code>，也可以是已经安装的第三方的模块，或者项目 内部的模块。</p>
-<p>为遵守风格指南中的规定，模块名称要短、使用小写，并避免使用特殊符号，比如点(.) 和问号(?)。如 <code>my.spam.py</code> 这样的名字是必须不能用的！该方式命名将妨碍 Python的模块查找功能。就<code>my.spam.py</code>来说，Python 认为需要在 <code>my</code> 文件夹 中找到 <code>spam.py</code> 文件，实际并不是这样。如果愿意您可以将模块命名为 <code>my_spam.py</code>， 不过并不推荐在模块名中使用下划线。但是，在模块名称中使用其他字符（空格或连字号） 将阻止导入（<code>-</code>是减法运算符），因此请尽量保持模块名称简单，以无需分开单词。 最重要的是，不要使用下划线命名空间，而是使用子模块。
+<p>例如在项目中，一层控制用户操作相关接口，另一层处理底层数据操作。最自然分开这两 层的方式是，在一份文件里重组所有功能接口，并将所有底层操作封装到另一个文件中。 这种情况下，接口文件需要导入封装底层操作的文件，可通过  <code>import</code>  和  <code>from  ...  import</code>  语句完成。一旦您使用 <code>import</code> 语句，就可以使用这个模块。 既可以是内置的模块包括  <code>os</code>  和  <code>sys</code>，也可以是已经安装的第三方的模块，或者项目内部的模块。</p>
+<p>为遵守风格指南中的规定，模块名称要短，使用小写，并避免使用特殊符号，比如点(.) 和问号(?)。如 <code>my.spam.py</code> 这样的名字是必须不能用的！该方式命名将妨碍 Python的模块查找功能。就 <code>my.spam.py</code> 来说，Python 认为需要在 <code>my</code> 文件夹 中找到 <code>spam.py</code> 文件，实际并不是这样。如果愿意您可以将模块命名为 <code>my_spam.py</code>， 不过并不推荐在模块名中使用下划线。但是，在模块名称中使用其他字符（空格或连字号） 将阻止导入（<code>-</code>是减法运算符），因此请尽量保持模块名称简单，以无需分开单词。 最重要的是，不要使用下划线命名空间，而是使用子模块。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># OK</span>
 <span class="kn">import</span> <span class="nn">library.plugin.foo</span>
 <span class="c1"># not OK</span>
 <span class="kn">import</span> <span class="nn">library.foo_plugin</span>
-</code></pre></div></p>
-<p>除了以上的命名限制外，Python文件成为模块没有其他特殊的要求，但为了合理地使用这 个观念并避免问题，您需要理解import的原理机制。具体来说，<code>import  modu</code>  语句将 寻找合适的文件，即调用目录下的  <code>modu.py</code>  文件（如果该文件存在）。如果没有 找到这份文件，Python解释器递归地在 "PYTHONPATH" 环境变量中查找该文件，如果仍没 有找到，将抛出<code>ImportError</code>异常。</p>
+</code></pre></div>
+<p>除了以上的命名限制外，Python文件成为模块没有其他特殊的要求，但为了合理地使用这 个观念并避免问题，您需要理解import的原理机制。具体来说，<code>import  modu</code>  语句将 寻找合适的文件，即调用目录下的  <code>modu.py</code>  文件（如果该文件存在）。如果没有 找到这份文件，Python解释器递归地在 "PYTHONPATH" 环境变量中查找该文件，如果仍没有找到，将抛出<code>ImportError</code>异常。</p>
 <p>一旦找到  <code>modu.py</code>，Python解释器将在隔离的作用域内执行这个模块。所有顶层 语句都会被执行，包括其他的引用。方法与类的定义将会存储到模块的字典中。然后，这个 模块的变量、方法和类通过命名空间暴露给调用方，这是Python中特别有用和强大的核心概念。</p>
 <p>也可以使用import语句的特殊形式 <code>from  modu  import  *</code> 模拟更标准的行为。但 <code>import  *</code> 通常 被认为是不好的做法。<strong>使用</strong>  <code>from  modu  import  *</code>  <strong>的代码较难阅读而且依赖独立性不足</strong>。 使用 <code>from  modu  import  func</code> 能精确定位您想导入的方法并将其放到全局命名空间中。 比 <code>from  modu  import  *</code> 要好些，因为它明确地指明往全局命名空间中导入了什么方法，它和 <code>import  modu</code> 相比唯一的优点是之后使用方法时可以少打点儿字。
 除了简单的单文件项目外，其他项目需要能够明确指出类和方法 的出处，例如使用 <code>modu.func</code> 语句，这将显著提升代码的可读性和易理解性。</p>
@@ -1127,16 +1123,16 @@ tqdm &gt;= 3.4, &lt;= 4.5
 <span class="n">x</span> <span class="o">=</span> <span class="n">modu</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># sqrt显然是属于模块modu的。</span>
 </code></pre></div>
 <h3 id="_8">包<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Python提供非常简单的包管理系统，即简单地将模块管理机制扩展到一个目录上(目录扩展为包)。任意包含  <code>__init__.py</code>  文件的目录都被认为是一个Python包。导入一个包里不同 模块的方式和普通的导入模块方式相似，特别的地方是  <code>__init__.py</code>  文件将集合 所有包范围内的定义。</p>
+<p>Python提供非常简单的包管理系统，即简单地将模块管理机制扩展到一个目录上(目录扩展为包)。任意包含  <code>__init__.py</code>  文件的目录都被认为是一个Python包。导入一个包里不同 模块的方式和普通的导入模块方式相似，特别的地方是  <code>__init__.py</code>  文件将集合所有包范围内的定义。</p>
 <p><code>pack/</code>  目录下的  <code>modu.py</code>  文件通过  <code>import  pack.modu</code>  语句导入。 该语句会在  <code>pack</code>  目录下寻找  <code>__init__.py</code>  文件，并执行其中所有顶层 语句。以上操作之后，<code>modu.py</code>  内定义的所有变量、方法和类在<code>pack.modu</code>命名空 间中均可看到。</p>
-<p>一个常见的问题是往  <code>__init__.py</code>  中加了过多代码，随着项目的复杂度增长， 目录结构越来越深，子包和更深嵌套的子包可能会出现。在这种情况下，导入多层嵌套 的子包中的某个部件需要执行所有通过路径里碰到的  <code>__init__.py</code>  文件。如果包内的模块和子包没有代码共享的需求，使用空白的  <code>__init__.py</code>  文件是正常 甚至好的做法。</p>
-<p>最后，导入深层嵌套的包可用这个方便的语法：<code>import very.deep.module as mod</code>。 该语法允许使用  mod  替代冗长的  <code>very.deep.module</code>。</p>
+<p>一个常见的问题是往  <code>__init__.py</code>  中加了过多代码，随着项目的复杂度增长， 目录结构越来越深，子包和更深嵌套的子包可能会出现。在这种情况下，导入多层嵌套的子包中的某个部件需要执行所有通过路径里碰到的  <code>__init__.py</code>  文件。如果包内的模块和子包没有代码共享的需求，使用空白的  <code>__init__.py</code>  文件是正常甚至好的做法。</p>
+<p>最后，导入深层嵌套的包可用这个方便的语法：<code>import very.deep.module as mod</code>。 该语法允许使用 <code>mod</code> 替代冗长的  <code>very.deep.module</code>。</p>
 <h2 id="_9">常见模块<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <h3 id="utils">utils<a class="headerlink" href="#utils" title="Permanent link">&para;</a></h3>
 <p>utils模块，顾名思义，一般用于存放一些通用的工具函数，通过模块调用实现函数复用，减少代码重复，同时在主程序中隐藏程序细节。例如：<code>print_format(str)</code>，<code>print_time()</code>， <code>compute_date()</code>等等。</p>
 <p><strong>什么样的函数适合放在utils？</strong></p>
 <p><strong>工具类函数</strong>，只负责某一个特定的功能，且不依附于某一个特定的类或者对象。简而言之就是**独立的**，<strong>上下文无关的</strong>，输入输出格式与主程序中自定义的类和对象无关，否则应该写在对于的类模块中。</p>
-<p>例如,数据读取函数<code>load_dataset(filepath)</code>，该函数返回的格式必定与<code>dataset</code>需要的格式相关，无论返回的是一个<code>dataset</code>实例对象还是列表或者字典，一旦数据集定义发生变化，势必需要修改这个函数，因此这个函数应该从属与<code>dataset</code>，写在<code>dataset</code>模块中，而不是utils中。</p>
+<p>例如，数据读取函数<code>load_dataset(filepath)</code>，该函数返回的格式必定与<code>dataset</code>需要的格式相关，无论返回的是一个<code>dataset</code>实例对象还是列表或者字典，一旦数据集定义发生变化，势必需要修改这个函数，因此这个函数应该从属与<code>dataset</code>，写在<code>dataset</code>模块中，而不是utils中。</p>
 <p>当utils模块中的函数很多时，或者你感到臃肿时，比如代码行数已经超过400行或者函数个数超过15个，这时候你应该考虑将其拆分成若干个这样的模块了。安装功能细分，将拆分的<code>a_utils.py</code>，<code>b_utils.py</code>封装在一个utils包，让后使用<code>from utils import a_utils</code>去调用这些函数。 </p>
 <p><strong>高阶技巧</strong>：使用utils包中的__init__模块将这些子模块中的函数都加载进来，然后像之前一样使用<code>import utils</code>去调用这些函数。<strong>但是不建议使用</strong>。</p>
 <h3 id="constants">constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h3>
@@ -1146,7 +1142,7 @@ tqdm &gt;= 3.4, &lt;= 4.5
 <p><strong>参考</strong>： <a href="https://www.zhihu.com/question/39827177">Configure some options in the settings</a></p>
 <p>程序所有的可变项叫做Settings。中文译作设置。所有的设置都是“可选项”，Option（选项，不是期权），因为在程序世界里没有真的开放式问题只有选择题（Option）。改变可选项的过程叫做Configure配置（动词）。</p>
 <p>configs与settings两者没有太大的区别，且不同框架、软件有的使用configs，有的使用settings，随项目而定。
-总而言之，项目设置、配置模块，一般用于系统全局环境的设置，例如数据库连接配置，服务器IP配置等等 。</p>
+总而言之，该模块，一般用于系统全局环境的设置，例如数据库连接配置，服务器IP配置等等 。</p>
 
 
 
