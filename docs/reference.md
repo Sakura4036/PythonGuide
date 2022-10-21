@@ -1,6 +1,6 @@
 # 参考目录
 
- 1. [Google Python风格指南中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/) 
+ 1. [Google Python风格指南中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/)
  2. [Python最佳实践指南](https://pythonguidecn.readthedocs.io/zh/latest/)
  3. [Python项目工程化开发指南](https://pyloong.github.io/pythonic-project-guidelines/)
  4. [Python 官方风格指南 PEP-8](https://peps.python.org/pep-0008/)

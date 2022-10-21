@@ -4,7 +4,7 @@
 在 Python 项目中 一般通过 [Mkdocs](https://www.mkdocs.org/) 和 [sphinx](https://www.sphinx-doc.org/en/master/) 来构建项目文档。
 两者都支持 markdown 标记的文件，但后者也支持 [reStructuredText](https://docutils.sourceforge.io/rst.html) 标记文件。
 
-##  Readme
+## Readme
 
 **Readme**与文档管理中的文档是不同的，各自有各自的作用。
 

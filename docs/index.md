@@ -32,7 +32,7 @@
 - [x] 参考目录
 
 
-## 参考：
+## 参考
 
  1. [Google Python风格指南中文版](https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/contents/)
  2. [Python 最佳实践指南 ](https://pythonguidecn.readthedocs.io/zh/latest/)
