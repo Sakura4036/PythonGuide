@@ -56,6 +56,31 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/patterns/</loc>
+         <lastmod>2022-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/behavioral%20patterns/</loc>
+         <lastmod>2022-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/</loc>
+         <lastmod>2022-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/principles/</loc>
+         <lastmod>2022-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/</loc>
+         <lastmod>2022-10-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://github.com/Sakura4036/PythonGuide/standard/language_rules/</loc>
          <lastmod>2022-10-25</lastmod>
          <changefreq>daily</changefreq>
