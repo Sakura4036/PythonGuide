@@ -19,6 +19,14 @@ nav:
         - 语言规范: standard/language_rules.md
         - 风格规范: standard/style_rules.md
     - Git版本控制: git.md
+    - 设计模式: 
+        设计模式: patterns/patterns.md
+        Gang of Four: 
+            - 基础原则: patterns/gang of four/principles.md
+            - 创建型模式: patterns/gang of four/creational patterns.md
+            - 结构型模式: patterns/gang of four/structural patterns.md
+            - 行为型模式: patterns/gang of four/behavioral patterns.md
+            
     - 参考目录: reference.md
 
 
