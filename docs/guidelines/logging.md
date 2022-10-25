@@ -16,6 +16,27 @@
 -   包含日志模块的应用，默认可通过根记录器对应用的日志流进行访问，除非您将日志过滤了。
 -   可通过  [`logging.Logger.setLevel()`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel)  方法有选择地记录日志， 或可通过设置  `logging.Logger.disabled`  属性为  `True`  来禁用。
 
+## 日志级别
+日志等级可以分为5个，从低到高分别是:
+
+ 1. DEBUG：程序调试bug时使用
+ 2. INFO ：程序正常运行时使用
+ 3. WARNING：程序未按预期运行时使用，但并不是错误，如:用户登录密码错误
+ 4. ERROR ：程序出错误时使用，如:IO操作失败
+ 5. CRITICAL ：特别严重的问题，导致程序不能再继续运行时使用，如:磁盘空间为空，一般很少使用。
+ 
+ 日志信息输出到控制台的示例代码:
+```python
+import logging
+logging.debug('这是⼀个debug级别的⽇志信息')
+logging.info('这是⼀个info级别的⽇志信息')
+logging.warning('这是⼀个warning级别的⽇志信息')
+logging.error('这是⼀个error级别的⽇志信息')
+logging.critical('这是⼀个critical级别的⽇志信息')
+```
+默认的是WARNING等级，当在WARNING或WARNING之上等级的才记录日志信息。但是无法使用 `debug` 和 `info` 输出正常日志信息。想要使用所有logging等级功能，应该设置 `level=logging.DEBUG`。
+
+
 ## 配置日志
 -   使用**INI**格式文件：
     
@@ -117,8 +138,8 @@ logger.debug('often makes a very good meal of %s', 'visiting tourists')
 ```python
 # logger.py
 # 创建Logger对象实例logger，然后其他模块只需要 from logger import logger
-# 通过logger.info("")方法调用
-
+# 通过logger.info(""), logger.warning(str)等方法调用
+# # logger.info("Houston, we have a %s", "interesting problem", exc_info=1)
 
 def create_logger(log_file, level=logging.DEBUG):  
     # logging.basicConfig函数对日志的输出格式及方式做相关配置  
@@ -143,8 +164,8 @@ def create_logger(log_file, level=logging.DEBUG):
 log_file_dir = 'logs'
 if not os.path.exists(log_file_dir):  
     os.makedirs(log_file_dir)  
-rq = time.strftime('%Y-%m-%d-%H-%M', time.localtime(time.time()))  
-log_file = os.path.join(log_file_dir, rq + '.log')
+now_time_format = time.strftime('%Y-%m-%d-%H-%M', time.localtime(time.time()))  
+log_file = os.path.join(log_file_dir, now_time_format + '.log')
 logger = create_logger(log_file)
 
  
