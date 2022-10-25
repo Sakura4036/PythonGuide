@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/guidelines/logging/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -426,6 +426,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    日志级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     配置日志
   </a>
   
@@ -440,14 +447,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     通过字典进行配置的例子
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     通过源码直接配置的例子
   </a>
   
@@ -717,6 +724,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    日志级别
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     配置日志
   </a>
   
@@ -731,14 +745,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     通过字典进行配置的例子
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     通过源码直接配置的例子
   </a>
   
@@ -791,7 +805,25 @@
 <li>包含日志模块的应用，默认可通过根记录器对应用的日志流进行访问，除非您将日志过滤了。</li>
 <li>可通过  <a href="https://docs.python.org/3/library/logging.html#logging.Logger.setLevel"><code>logging.Logger.setLevel()</code></a>  方法有选择地记录日志， 或可通过设置  <code>logging.Logger.disabled</code>  属性为  <code>True</code>  来禁用。</li>
 </ul>
-<h2 id="_2">配置日志<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">日志级别<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>日志等级可以分为5个，从低到高分别是:</p>
+<ol>
+<li>DEBUG：程序调试bug时使用</li>
+<li>INFO ：程序正常运行时使用</li>
+<li>WARNING：程序未按预期运行时使用，但并不是错误，如:用户登录密码错误</li>
+<li>ERROR ：程序出错误时使用，如:IO操作失败</li>
+<li>CRITICAL ：特别严重的问题，导致程序不能再继续运行时使用，如:磁盘空间为空，一般很少使用。</li>
+</ol>
+<p>日志信息输出到控制台的示例代码:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;这是⼀个debug级别的⽇志信息&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;这是⼀个info级别的⽇志信息&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;这是⼀个warning级别的⽇志信息&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;这是⼀个error级别的⽇志信息&#39;</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">critical</span><span class="p">(</span><span class="s1">&#39;这是⼀个critical级别的⽇志信息&#39;</span><span class="p">)</span>
+</code></pre></div>
+默认的是WARNING等级，当在WARNING或WARNING之上等级的才记录日志信息。但是无法使用 <code>debug</code> 和 <code>info</code> 输出正常日志信息。想要使用所有logging等级功能，应该设置 <code>level=logging.DEBUG</code>。</p>
+<h2 id="_3">配置日志<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>使用**INI**格式文件：</p>
@@ -847,7 +879,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;often makes a very good meal of </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;visiting tourists&#39;</span><span class="p">)</span>
 </code></pre></div></p>
-<h3 id="_3">通过字典进行配置的例子<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">通过字典进行配置的例子<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>Python 2.7中，您可以使用字典实现详细配置。<a href="https://www.python.org/dev/peps/pep-0391"><strong>PEP 391</strong></a>  包含了一系列字典配置的强制和 非强制的元素。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">logging.config</span> <span class="kn">import</span> <span class="n">dictConfig</span>
@@ -874,7 +906,7 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;often makes a very good meal of </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;visiting tourists&#39;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="_4">通过源码直接配置的例子<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">通过源码直接配置的例子<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
@@ -890,8 +922,8 @@
 <h3 id="logger">logger文件示例<a class="headerlink" href="#logger" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># logger.py</span>
 <span class="c1"># 创建Logger对象实例logger，然后其他模块只需要 from logger import logger</span>
-<span class="c1"># 通过logger.info(&quot;&quot;)方法调用</span>
-
+<span class="c1"># 通过logger.info(&quot;&quot;), logger.warning(str)等方法调用</span>
+<span class="c1"># # logger.info(&quot;Houston, we have a %s&quot;, &quot;interesting problem&quot;, exc_info=1)</span>
 
 <span class="k">def</span> <span class="nf">create_logger</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">):</span>  
     <span class="c1"># logging.basicConfig函数对日志的输出格式及方式做相关配置  </span>
@@ -916,8 +948,8 @@
 <span class="n">log_file_dir</span> <span class="o">=</span> <span class="s1">&#39;logs&#39;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">log_file_dir</span><span class="p">):</span>  
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log_file_dir</span><span class="p">)</span>  
-<span class="n">rq</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">-%H-%M&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>  
-<span class="n">log_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_file_dir</span><span class="p">,</span> <span class="n">rq</span> <span class="o">+</span> <span class="s1">&#39;.log&#39;</span><span class="p">)</span>
+<span class="n">now_time_format</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">-%H-%M&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span>  
+<span class="n">log_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">log_file_dir</span><span class="p">,</span> <span class="n">now_time_format</span> <span class="o">+</span> <span class="s1">&#39;.log&#39;</span><span class="p">)</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">create_logger</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span>
 </code></pre></div>
 
@@ -993,10 +1025,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
     
   </body>
