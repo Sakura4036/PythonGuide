@@ -648,34 +648,6 @@
     
   
   
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_2">
-          Gang of Four
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Gang of Four" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_2">
-          <span class="md-nav__icon md-icon"></span>
-          Gang of Four
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-    
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -724,7 +696,7 @@
       
         <li class="md-nav__item">
   <a href="#1-adapter" class="md-nav__link">
-    方案#1: 适配器（Adapter）模式
+    方案1: 适配器（Adapter）模式
   </a>
   
 </li>
@@ -737,8 +709,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decorator" class="md-nav__link">
-    装饰器（Decorator）模式
+  <a href="#3-decorator" class="md-nav__link">
+    方案3 装饰器（Decorator）模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    方案4 更优
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dodgeif" class="md-nav__link">
+    Dodge:"if" 语句
   </a>
   
 </li>
@@ -789,13 +775,6 @@
       <a href="../behavioral%20patterns/" class="md-nav__link">
         行为型模式
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -864,7 +843,7 @@
       
         <li class="md-nav__item">
   <a href="#1-adapter" class="md-nav__link">
-    方案#1: 适配器（Adapter）模式
+    方案1: 适配器（Adapter）模式
   </a>
   
 </li>
@@ -877,8 +856,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#decorator" class="md-nav__link">
-    装饰器（Decorator）模式
+  <a href="#3-decorator" class="md-nav__link">
+    方案3 装饰器（Decorator）模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    方案4 更优
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dodgeif" class="md-nav__link">
+    Dodge:"if" 语句
   </a>
   
 </li>
@@ -965,7 +958,7 @@ SyslogLogger      FilteredSyslogLogger
 <p>如果m和n都继续增长，那么类的总数将呈几何级数增长。这就是 "四人帮 "想要避免的 "类的扩散(proliferation of classes) "和 "子类的爆炸(explosion of subclasses)"。</p>
 <p>解决办法是承认一个既负责过滤消息又负责记录消息的类太复杂了。在现代面向对象的实践中，它将被指责为违反了 <strong>"单一责任原则"</strong>。</p>
 <p>但是，我们怎样才能将消息过滤和消息输出这两个功能分布在不同的类中呢？</p>
-<h2 id="1-adapter">方案#1: 适配器（Adapter）模式<a class="headerlink" href="#1-adapter" title="Permanent link">&para;</a></h2>
+<h2 id="1-adapter">方案1: 适配器（Adapter）模式<a class="headerlink" href="#1-adapter" title="Permanent link">&para;</a></h2>
 <p>一种解决方案是适配器模式：决定不需要改进原来的记录器类，因为任何输出消息的机制都可以被包装成看起来像记录器所期望的文件对象。</p>
 <ol>
 <li>所以我们保留了原来的 <code>Logger</code>。</li>
@@ -1064,7 +1057,7 @@ SyslogLogger      FilteredSyslogLogger
 </code></pre></div></p>
 <p>这提出了比适配器更多的对称性。文件输出是<code>Logger</code>的本机，而非文件输出则需要一个额外的类，现在，一个有效的记录器总是由一个抽象和一个实现组成。</p>
 <p>再一次，子类的爆炸被避免了，因为两种类在运行时被组合在一起，不需要任何一个类被扩展。</p>
-<h2 id="decorator">装饰器（Decorator）模式<a class="headerlink" href="#decorator" title="Permanent link">&para;</a></h2>
+<h2 id="3-decorator">方案3 装饰器（Decorator）模式<a class="headerlink" href="#3-decorator" title="Permanent link">&para;</a></h2>
 <p>如果我们想对同一个日志应用两个不同的过滤器呢？上述两个解决方案都不支持多个过滤器比如说，一个是按优先级过滤，另一个是匹配一个关键词。</p>
 <p>回顾一下上一节中定义的过滤器。我们不能堆叠两个过滤器的原因是它们提供的接口和它们包裹的接口之间存在着不对称：它们提供了一个<code>log()</code>方法，但却调用了它们的处理程序的<code>emit()</code>方法。当外部过滤器试图调用内部过滤器的<code>emit()</code>时，将一个过滤器包裹在另一个过滤器中会导致 <code>AttributeError</code>。</p>
 <p>如果我们把我们的过滤器和处理程序转变成提供相同的接口，使它们都提供一个<code>log()</code>方法，那么我们就达到了装饰器模式。</p>
@@ -1123,6 +1116,110 @@ Error: this is important and gets printed
 <div class="highlight"><pre><span></span><code>Error: this is pretty severe
 </code></pre></div>
 但是请注意这个设计的对称性被打破的地方：虽然过滤器可以被堆叠，但是输出例程不能被合并或堆叠。日志信息仍然只能被写入一个输出。</p>
+<h2 id="4">方案4 更优<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>Python的日志模块想要更多的灵活性：不仅要支持多个过滤器，而且要支持单个日志信息流的多个输出。基于其他语言的日志模块的设计--主要的灵感请参见<code>PEP 282</code>的 "影响 "部分——Python的日志模块实现了自己的 <code>Composition Over Inheritance</code> 模式。</p>
+<ol>
+<li>调用者与之交互的<code>Logger</code>类本身并不实现过滤或输出。相反，它维护了一个过滤器<code>logger</code>的列表和一个处理程序<code>handler</code>的列表。</li>
+<li>对于每条日志消息，记录器都会调用它的每个过滤器。如果有任何过滤器拒绝该消息，该消息就会被丢弃。</li>
+<li>对于每条被所有过滤器接受的日志消息，日志记录器会在其输出处理程序<code>hander</code>上循环，并要求每一个处理程序 <code>emit()</code> 该消息。</li>
+</ol>
+<p>或者，至少，这就是这个想法的核心。标准库的日志记录实际上更加复杂。例如，每个处理程序可以携带它自己的过滤器列表，除了那些由它的记录器列出的过滤器。每个处理程序还指定了一个最小的消息 "level"，比如 <code>INFO</code> 或 <code>WARNING</code> ，相当令人困惑的是，这个级别既不是由处理程序本身也不是由处理程序的任何过滤器来执行的，而是由埋在日志记录器深处的 <code>if</code> 语句来执行的，它在处理程序中循环。因此，整个设计是有点混乱的。</p>
+<p>但我们可以使用标准库记录器的基本见解——一个记录器的消息可能同时值得多个过滤器和多个输出——来完全解耦过滤器类和处理程序类。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># There is now only one logger.</span>
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">handlers</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span> <span class="o">=</span> <span class="n">handlers</span>
+
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+                <span class="n">h</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+<span class="c1"># Filters now know only about strings!</span>
+<span class="k">class</span> <span class="nc">TextFilter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span>
+
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="ow">in</span> <span class="n">text</span>
+
+<span class="c1"># Handlers look like “loggers” did in the previous solution.</span>
+<span class="k">class</span> <span class="nc">FileHandler</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
+
+    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">SocketHandler</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock</span>
+
+    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">((</span><span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+
+<span class="k">class</span> <span class="nc">SyslogHandler</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">priority</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">priority</span>
+
+    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="n">syslog</span><span class="o">.</span><span class="n">syslog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">priority</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</code></pre></div>
+<p>请注意，只有在我们设计的最后一个支点上，过滤器才真正以其应有的简单性闪亮登场。这是第一次，它们只接受一个字符串，只返回一个判决。之前所有的设计要么是将过滤功能隐藏在日志类中，要么是让过滤器承担了超出简单判决的额外职责。</p>
+<p>事实上，"日志 "这个词已经从过滤器类的名称中完全删除了，而且有一个非常重要的原因：它不再有任何特定于日志的东西了。<code>TextFilter</code> 现在完全可以在任何涉及到字符串的情况下重用。最后与日志的具体概念解耦，它将更容易测试和维护。</p>
+<p>同样的，就像所有解决一个问题的 <em>Composition Over Inheritance</em> 方案一样，类在运行时被组成，而不需要任何继承性。</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">f</span> <span class="o">=</span> <span class="n">TextFilter</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">FileHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">([</span><span class="n">f</span><span class="p">],</span> <span class="p">[</span><span class="n">h</span><span class="p">])</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Ignored: this will not be logged&#39;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Error: this is important&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Error: this is important
+</code></pre></div></p>
+<p>这里有一个关键的教训：像 <em>Composition Over Inheritance</em> 这样的设计原则，最终要比  <em>Adapter</em> 或 <em>Decorator</em> 这样的个别模式更重要。始终遵循原则。但不要总是觉得被限制在官方列表中选择一个模式。我们现在得出的设计比以前的任何一个设计都更灵活，也更容易维护，尽管它们是基于官方的四人帮模式，但这个最终的设计却不是。有时候，是的，你会发现一个现有的设计模式完全适合你的问题--但如果不是，如果你超越它们，你的设计可能会更强大。</p>
+<h2 id="dodgeif">Dodge:"if" 语句<a class="headerlink" href="#dodgeif" title="Permanent link">&para;</a></h2>
+<p>我怀疑上面的代码让许多读者感到惊奇。对于一个典型的Python程序员来说，如此大量地使用类可能看起来完全是矫揉造作的——这是一种尴尬的练习，试图使20世纪80年代的旧思想看起来与现代Python有关。</p>
+<p>当一个新的设计要求出现时，典型的 Python 程序员真的会去写一个新的类吗？没有！<strong>"简单总比复杂好"</strong>。为什么要增加一个类，如果一个 <code>if</code> 语句可以代替的话？一个单一的记录器类可以逐渐增加条件，直到它处理所有与我们之前的例子相同的情况:
+<div class="highlight"><pre><span></span><code><span class="c1"># Each new feature as an “if” statement.</span>
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sock</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">priority</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">priority</span>
+
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">message</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">sendall</span><span class="p">((</span><span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">priority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">syslog</span><span class="o">.</span><span class="n">syslog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">priority</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+<span class="c1"># Works just fine.</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Warning: not that important&#39;</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Error: this is important&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>你可能认识到这个例子是你在实际应用中遇到的比较典型的 Python 设计实践。</p>
+<p><code>if</code> 语句的方法并非完全没有好处。这个类的所有可能的行为都可以在从上到下阅读代码的过程中掌握。参数列表可能看起来很冗长，但是由于 Python 的可选关键字参数，对这个类的大多数调用不需要提供所有的四个参数。</p>
+<p>(这个类确实只能处理一个文件和一个套接字，但这是为了可读性而附带进行的简化。我们可以很容易地将 <code>file</code> 和 <code>socket</code> 的参数转为命名 <code>files</code> 和 <code>sockets</code> 的列表）。</p>
+<p>鉴于每个Python程序员都能很快学会 <code>if</code>，但理解类却需要更长的时间，对于代码来说，依靠最简单的机制来实现一个功能，似乎是一个明显的胜利。但是让我们来平衡一下这种诱惑，明确说明躲避 <em>Composition Over Inheritance</em> ("组合而非继承 ")会失去什么。</p>
+<ol>
+<li><strong>Locality</strong>，本地性。重组代码以使用 <code>if</code> 语句并没有为可读性带来无尽的好处。如果你的任务是改进或调试一个特定的功能——比如说，支持向套接字写入——你会发现你无法在一个地方阅读它的代码。这个单一功能背后的代码散落在初始化器的参数列表、初始化器的代码和 <code>log()</code> 方法本身之间。</li>
+<li><strong>Deletability</strong>，可删除性。好的设计的一个未被重视的特性是它使删除功能变得容易。也许只有大型和成熟的Python应用程序的老手才会强烈地体会到删除代码对项目健康的重要性。在我们基于类的解决方案中，我们可以通过删除 <code>SocketHandler</code> 类和它的单元测试，在应用程序不再需要它的时候，轻而易举地删除像记录到套接字的功能。相比之下，从森林中的 <code>if</code> 语句中删除socket功能不仅需要谨慎，以避免破坏相邻的代码，而且还提出了一个尴尬的问题：如何处理初始化器中的 <code>socket</code> 参数。它可以被删除吗？如果我们需要保持位置参数列表的一致性，那就不行了--我们需要保留这个参数，但如果它被使用就会引发一个异常。</li>
+<li><strong>Dead code analysis</strong>，死代码分析。与上一点相关的是，当我们使用 _Composition Over Inheritance_时，死代码分析器可以简单地检测到代码库中最后一次使用 <code>SocketHandler</code> 的时间消失。但死代码分析往往无能为力，无法做出 "你现在可以删除所有与 <code>socket</code> 输出有关的属性和 <code>if</code> 语句，因为没有任何幸存的初始化器调用为 <code>socket</code> 传递<code>None</code> 以外的东西 "的判断。</li>
+<li><strong>Testing</strong>，测试。我们的测试所提供的关于代码健康的最强烈的信号之一是，在到达被测试行之前，有多少行不相关的代码需要运行。如果测试可以简单地启动一个 <code>SocketHandler</code> 实例，传递给它一个活的套接字，并要求它 <code>emit()</code> 一个消息，那么测试一个像套接字日志这样的功能就很容易。除了与该功能相关的代码外，没有其他代码运行。但是在我们的 <code>if</code> 语句森林中测试套接字日志，至少要运行三倍的代码行数。仅仅为了测试其中的一个功能，就必须设置一个具有正确组合的记录器，这是一个重要的警告信号，在这个小例子中可能看起来微不足道，但随着系统的扩大，这一点变得至关重要。</li>
+<li><strong>Efficiency</strong>， 效率。我特意把这一点放在最后，因为可读性和可维护性通常是更重要的关注点。但是 <code>if</code> 语句之林的设计问题也体现在这种方法的低效率上。即使你想要一个简单的未经过滤的日志到一个文件中，每一条信息都将被迫针对你可能启用的每一个功能运行一个<code>if</code> 语句。相比之下，组合技术只对你所组合的功能运行代码。</li>
+</ol>
+<p>由于所有这些原因，我建议，从软件设计的角度来看， <code>if</code> 语句森林的表面简单性在很大程度上是一种错觉。将记录器自上而下地读成一段代码的能力是以其他几种概念上的花费为代价的，这些花费会随着代码库的大小而急剧增长。</p>
 
 
 
