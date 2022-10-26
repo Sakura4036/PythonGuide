@@ -79,7 +79,7 @@ SyslogLogger      FilteredSyslogLogger
 
 但是，我们怎样才能将消息过滤和消息输出这两个功能分布在不同的类中呢？
 
-## 方案#1: 适配器（Adapter）模式
+## 方案1: 适配器（Adapter）模式
 
 
 一种解决方案是适配器模式：决定不需要改进原来的记录器类，因为任何输出消息的机制都可以被包装成看起来像记录器所期望的文件对象。
@@ -200,7 +200,7 @@ Error: this is important
 
 再一次，子类的爆炸被避免了，因为两种类在运行时被组合在一起，不需要任何一个类被扩展。
 
-## 装饰器（Decorator）模式
+## 方案3 装饰器（Decorator）模式
 
 如果我们想对同一个日志应用两个不同的过滤器呢？上述两个解决方案都不支持多个过滤器比如说，一个是按优先级过滤，另一个是匹配一个关键词。
 
@@ -272,4 +272,126 @@ Error: this is pretty severe
 ```
 但是请注意这个设计的对称性被打破的地方：虽然过滤器可以被堆叠，但是输出例程不能被合并或堆叠。日志信息仍然只能被写入一个输出。
 
+## 方案4 更优
 
+Python的日志模块想要更多的灵活性：不仅要支持多个过滤器，而且要支持单个日志信息流的多个输出。基于其他语言的日志模块的设计--主要的灵感请参见`PEP 282`的 "影响 "部分——Python的日志模块实现了自己的 `Composition Over Inheritance` 模式。
+
+1. 调用者与之交互的`Logger`类本身并不实现过滤或输出。相反，它维护了一个过滤器`logger`的列表和一个处理程序`handler`的列表。
+2. 对于每条日志消息，记录器都会调用它的每个过滤器。如果有任何过滤器拒绝该消息，该消息就会被丢弃。
+3. 对于每条被所有过滤器接受的日志消息，日志记录器会在其输出处理程序`hander`上循环，并要求每一个处理程序 `emit()` 该消息。
+
+或者，至少，这就是这个想法的核心。标准库的日志记录实际上更加复杂。例如，每个处理程序可以携带它自己的过滤器列表，除了那些由它的记录器列出的过滤器。每个处理程序还指定了一个最小的消息 "level"，比如 `INFO` 或 `WARNING` ，相当令人困惑的是，这个级别既不是由处理程序本身也不是由处理程序的任何过滤器来执行的，而是由埋在日志记录器深处的 `if` 语句来执行的，它在处理程序中循环。因此，整个设计是有点混乱的。
+
+但我们可以使用标准库记录器的基本见解——一个记录器的消息可能同时值得多个过滤器和多个输出——来完全解耦过滤器类和处理程序类。
+
+```python
+# There is now only one logger.
+class Logger:
+    def __init__(self, filters, handlers):
+        self.filters = filters
+        self.handlers = handlers
+
+    def log(self, message):
+        if all(f.match(message) for f in self.filters):
+            for h in self.handlers:
+                h.emit(message)
+
+# Filters now know only about strings!
+class TextFilter:
+    def __init__(self, pattern):
+        self.pattern = pattern
+
+    def match(self, text):
+        return self.pattern in text
+
+# Handlers look like “loggers” did in the previous solution.
+class FileHandler:
+    def __init__(self, file):
+        self.file = file
+
+    def emit(self, message):
+        self.file.write(message + '\n')
+        self.file.flush()
+
+class SocketHandler:
+    def __init__(self, sock):
+        self.sock = sock
+
+    def emit(self, message):
+        self.sock.sendall((message + '\n').encode('ascii'))
+
+class SyslogHandler:
+    def __init__(self, priority):
+        self.priority = priority
+
+    def emit(self, message):
+        syslog.syslog(self.priority, message)
+```
+
+请注意，只有在我们设计的最后一个支点上，过滤器才真正以其应有的简单性闪亮登场。这是第一次，它们只接受一个字符串，只返回一个判决。之前所有的设计要么是将过滤功能隐藏在日志类中，要么是让过滤器承担了超出简单判决的额外职责。
+
+事实上，"日志 "这个词已经从过滤器类的名称中完全删除了，而且有一个非常重要的原因：它不再有任何特定于日志的东西了。`TextFilter` 现在完全可以在任何涉及到字符串的情况下重用。最后与日志的具体概念解耦，它将更容易测试和维护。
+
+同样的，就像所有解决一个问题的 _Composition Over Inheritance_ 方案一样，类在运行时被组成，而不需要任何继承性。
+
+```python
+f = TextFilter('Error')
+h = FileHandler(sys.stdout)
+logger = Logger([f], [h])
+
+logger.log('Ignored: this will not be logged')
+logger.log('Error: this is important')
+```
+```
+Error: this is important
+```
+
+这里有一个关键的教训：像 _Composition Over Inheritance_ 这样的设计原则，最终要比  _Adapter_ 或 _Decorator_ 这样的个别模式更重要。始终遵循原则。但不要总是觉得被限制在官方列表中选择一个模式。我们现在得出的设计比以前的任何一个设计都更灵活，也更容易维护，尽管它们是基于官方的四人帮模式，但这个最终的设计却不是。有时候，是的，你会发现一个现有的设计模式完全适合你的问题--但如果不是，如果你超越它们，你的设计可能会更强大。
+
+## Dodge:"if" 语句
+
+我怀疑上面的代码让许多读者感到惊奇。对于一个典型的Python程序员来说，如此大量地使用类可能看起来完全是矫揉造作的——这是一种尴尬的练习，试图使20世纪80年代的旧思想看起来与现代Python有关。
+
+当一个新的设计要求出现时，典型的 Python 程序员真的会去写一个新的类吗？没有！**"简单总比复杂好"**。为什么要增加一个类，如果一个 `if` 语句可以代替的话？一个单一的记录器类可以逐渐增加条件，直到它处理所有与我们之前的例子相同的情况:
+```python
+# Each new feature as an “if” statement.
+class Logger:
+    def __init__(self, pattern=None, file=None, sock=None, priority=None):
+        self.pattern = pattern
+        self.file = file
+        self.sock = sock
+        self.priority = priority
+
+    def log(self, message):
+        if self.pattern is not None:
+            if self.pattern not in message:
+                return
+        if self.file is not None:
+            self.file.write(message + '\n')
+            self.file.flush()
+        if self.sock is not None:
+            self.sock.sendall((message + '\n').encode('ascii'))
+        if self.priority is not None:
+            syslog.syslog(self.priority, message)
+
+# Works just fine.
+logger = Logger(pattern='Error', file=sys.stdout)
+logger.log('Warning: not that important')
+logger.log('Error: this is important')
+```
+
+你可能认识到这个例子是你在实际应用中遇到的比较典型的 Python 设计实践。
+
+`if` 语句的方法并非完全没有好处。这个类的所有可能的行为都可以在从上到下阅读代码的过程中掌握。参数列表可能看起来很冗长，但是由于 Python 的可选关键字参数，对这个类的大多数调用不需要提供所有的四个参数。
+
+(这个类确实只能处理一个文件和一个套接字，但这是为了可读性而附带进行的简化。我们可以很容易地将 `file` 和 `socket` 的参数转为命名 `files` 和 `sockets` 的列表）。
+
+鉴于每个Python程序员都能很快学会 `if`，但理解类却需要更长的时间，对于代码来说，依靠最简单的机制来实现一个功能，似乎是一个明显的胜利。但是让我们来平衡一下这种诱惑，明确说明躲避 _Composition Over Inheritance_ ("组合而非继承 ")会失去什么。
+
+1. **Locality**，本地性。重组代码以使用 `if` 语句并没有为可读性带来无尽的好处。如果你的任务是改进或调试一个特定的功能——比如说，支持向套接字写入——你会发现你无法在一个地方阅读它的代码。这个单一功能背后的代码散落在初始化器的参数列表、初始化器的代码和 `log()` 方法本身之间。
+2. **Deletability**，可删除性。好的设计的一个未被重视的特性是它使删除功能变得容易。也许只有大型和成熟的Python应用程序的老手才会强烈地体会到删除代码对项目健康的重要性。在我们基于类的解决方案中，我们可以通过删除 `SocketHandler` 类和它的单元测试，在应用程序不再需要它的时候，轻而易举地删除像记录到套接字的功能。相比之下，从森林中的 `if` 语句中删除socket功能不仅需要谨慎，以避免破坏相邻的代码，而且还提出了一个尴尬的问题：如何处理初始化器中的 `socket` 参数。它可以被删除吗？如果我们需要保持位置参数列表的一致性，那就不行了--我们需要保留这个参数，但如果它被使用就会引发一个异常。
+3. **Dead code analysis**，死代码分析。与上一点相关的是，当我们使用 _Composition Over Inheritance_时，死代码分析器可以简单地检测到代码库中最后一次使用 `SocketHandler` 的时间消失。但死代码分析往往无能为力，无法做出 "你现在可以删除所有与 `socket` 输出有关的属性和 `if` 语句，因为没有任何幸存的初始化器调用为 `socket` 传递`None` 以外的东西 "的判断。
+4. **Testing**，测试。我们的测试所提供的关于代码健康的最强烈的信号之一是，在到达被测试行之前，有多少行不相关的代码需要运行。如果测试可以简单地启动一个 `SocketHandler` 实例，传递给它一个活的套接字，并要求它 `emit()` 一个消息，那么测试一个像套接字日志这样的功能就很容易。除了与该功能相关的代码外，没有其他代码运行。但是在我们的 `if` 语句森林中测试套接字日志，至少要运行三倍的代码行数。仅仅为了测试其中的一个功能，就必须设置一个具有正确组合的记录器，这是一个重要的警告信号，在这个小例子中可能看起来微不足道，但随着系统的扩大，这一点变得至关重要。
+5. **Efficiency**， 效率。我特意把这一点放在最后，因为可读性和可维护性通常是更重要的关注点。但是 `if` 语句之林的设计问题也体现在这种方法的低效率上。即使你想要一个简单的未经过滤的日志到一个文件中，每一条信息都将被迫针对你可能启用的每一个功能运行一个`if` 语句。相比之下，组合技术只对你所组合的功能运行代码。
+
+由于所有这些原因，我建议，从软件设计的角度来看， `if` 语句森林的表面简单性在很大程度上是一种错觉。将记录器自上而下地读成一段代码的能力是以其他几种概念上的花费为代价的，这些花费会随着代码库的大小而急剧增长。
