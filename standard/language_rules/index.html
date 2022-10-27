@@ -1073,8 +1073,7 @@
     <span class="k">def</span> <span class="nf">anonymous_func</span><span class="p">():</span>
         <span class="k">nonlocal</span> <span class="n">i</span>
         <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#</span>
-         <span class="n">i</span><span class="o">=</span><span class="mi">2</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># i=2</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># i=2</span>
 </code></pre></div>
 <h2 id="_6">推导式与生成式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
@@ -1104,8 +1103,8 @@
         <span class="k">if</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">z</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="_7">迭代器与操作符<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>容器类型，像字典和列表，定义了默认的迭代器和关系测试操作符(<code>in</code>和<code>not in</code>)。它们直接表达了操作，没有额外的方法调用。 使用默认操作符的函数是通用的。 它可以用于支持该操作的任何类型。
-<strong>Good</strong>
+<p>容器类型，像字典和列表，定义了默认的迭代器和关系测试操作符(<code>in</code>和<code>not in</code>)。它们直接表达了操作，没有额外的方法调用。 使用默认操作符的函数是通用的。 它可以用于支持该操作的任何类型。</p>
+<p><strong>Good</strong>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">adict</span><span class="p">:</span> <span class="o">...</span>
 <span class="k">if</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span> <span class="o">...</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">afile</span><span class="p">:</span> <span class="o">...</span>
