@@ -61,22 +61,67 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/behavioral%20patterns/</loc>
-         <lastmod>2022-10-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/</loc>
-         <lastmod>2022-10-27</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/principles/</loc>
          <lastmod>2022-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/</loc>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/behavioral%20patterns/iterator/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/abstract%20factory/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/builder/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/factory%20method/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/prototype/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/singleton/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/global%20object/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/prebound%20method/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/sentinel%20object/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/composite/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/decorator/</loc>
+         <lastmod>2022-10-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/flyweight/</loc>
          <lastmod>2022-10-27</lastmod>
          <changefreq>daily</changefreq>
     </url>

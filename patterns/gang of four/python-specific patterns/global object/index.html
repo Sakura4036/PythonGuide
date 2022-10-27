@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/guidelines/code_refactor/">
+        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/global%20object/">
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
-        <title>代码重构 - PythonGuide</title>
+        <title>Global Object Pattern - PythonGuide</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
@@ -43,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#global-object-pattern" class="md-skip">
           跳转至
         </a>
       
@@ -82,7 +82,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+    <a href="../../../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              代码重构
+              Global Object Pattern
             
           </span>
         </div>
@@ -176,7 +176,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
+    <a href="../../../.." class="md-tabs__link">
       主页
     </a>
   </li>
@@ -184,8 +184,6 @@
       
         
   
-  
-    
   
 
 
@@ -198,7 +196,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../project_structure/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../../guidelines/project_structure/" class="md-tabs__link">
         项目开发
       </a>
     </li>
@@ -216,7 +214,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../standard/language_rules/" class="md-tabs__link">
+      <a href="../../../../standard/language_rules/" class="md-tabs__link">
         Python规范
       </a>
     </li>
@@ -229,7 +227,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../git/" class="md-tabs__link">
+    <a href="../../../../git/" class="md-tabs__link">
       Git版本控制
     </a>
   </li>
@@ -244,7 +242,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../patterns/patterns/" class="md-tabs__link">
+      <a href="../../../patterns/" class="md-tabs__link">
         设计模式
       </a>
     </li>
@@ -257,7 +255,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../reference/" class="md-tabs__link">
+    <a href="../../../../reference/" class="md-tabs__link">
       参考目录
     </a>
   </li>
@@ -284,7 +282,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+    <a href="../../../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -315,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         主页
       </a>
     </li>
@@ -328,14 +326,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -384,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../project_structure/" class="md-nav__link">
+      <a href="../../../../guidelines/project_structure/" class="md-nav__link">
         项目结构
       </a>
     </li>
@@ -398,7 +394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logging/" class="md-nav__link">
+      <a href="../../../../guidelines/logging/" class="md-nav__link">
         日志
       </a>
     </li>
@@ -412,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/" class="md-nav__link">
+      <a href="../../../../guidelines/configuration/" class="md-nav__link">
         配置文件
       </a>
     </li>
@@ -426,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../document/" class="md-nav__link">
+      <a href="../../../../guidelines/document/" class="md-nav__link">
         文档管理
       </a>
     </li>
@@ -445,14 +441,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
       
       
       
@@ -475,7 +469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code_lint/" class="md-nav__link">
+      <a href="../../../../guidelines/code_lint/" class="md-nav__link">
         代码检测
       </a>
     </li>
@@ -489,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../program_design/" class="md-nav__link">
+      <a href="../../../../guidelines/program_design/" class="md-nav__link">
         设计模式
       </a>
     </li>
@@ -501,52 +495,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          代码重构
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../guidelines/code_refactor/" class="md-nav__link">
         代码重构
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    待更新。。。
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -599,7 +552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../standard/language_rules/" class="md-nav__link">
+      <a href="../../../../standard/language_rules/" class="md-nav__link">
         语言规范
       </a>
     </li>
@@ -613,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../standard/style_rules/" class="md-nav__link">
+      <a href="../../../../standard/style_rules/" class="md-nav__link">
         风格规范
       </a>
     </li>
@@ -635,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../git/" class="md-nav__link">
+      <a href="../../../../git/" class="md-nav__link">
         Git版本控制
       </a>
     </li>
@@ -676,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/patterns/" class="md-nav__link">
+      <a href="../../../patterns/" class="md-nav__link">
         设计模式
       </a>
     </li>
@@ -690,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/principles/" class="md-nav__link">
+      <a href="../../principles/" class="md-nav__link">
         基础原则
       </a>
     </li>
@@ -730,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang of four/python-specific/global object.md" class="md-nav__link">
+      <a href="../../../gang of four/python-specific/global object.md" class="md-nav__link">
         Global Object Pattern
       </a>
     </li>
@@ -744,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang of four/python-specific/prebound method.md" class="md-nav__link">
+      <a href="../../../gang of four/python-specific/prebound method.md" class="md-nav__link">
         Prebound Method Pattern
       </a>
     </li>
@@ -758,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang of four/python-specific/sentinel object.md" class="md-nav__link">
+      <a href="../../../gang of four/python-specific/sentinel object.md" class="md-nav__link">
         Sentinel Object Pattern
       </a>
     </li>
@@ -805,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/creational%20patterns/abstract%20factory/" class="md-nav__link">
+      <a href="../../creational%20patterns/abstract%20factory/" class="md-nav__link">
         Abstract Factory Pattern
       </a>
     </li>
@@ -819,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/creational%20patterns/builder/" class="md-nav__link">
+      <a href="../../creational%20patterns/builder/" class="md-nav__link">
         Builder Pattern
       </a>
     </li>
@@ -833,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/creational%20patterns/factory%20method/" class="md-nav__link">
+      <a href="../../creational%20patterns/factory%20method/" class="md-nav__link">
         Factory Method Pattern
       </a>
     </li>
@@ -847,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/creational%20patterns/prototype/" class="md-nav__link">
+      <a href="../../creational%20patterns/prototype/" class="md-nav__link">
         Prototype Pattern
       </a>
     </li>
@@ -861,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/creational%20patterns/singleton/" class="md-nav__link">
+      <a href="../../creational%20patterns/singleton/" class="md-nav__link">
         Singleton Pattern
       </a>
     </li>
@@ -908,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/structural%20patterns/composite/" class="md-nav__link">
+      <a href="../../structural%20patterns/composite/" class="md-nav__link">
         Composite Pattern
       </a>
     </li>
@@ -922,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/structural%20patterns/decorator/" class="md-nav__link">
+      <a href="../../structural%20patterns/decorator/" class="md-nav__link">
         Decorator Pattern
       </a>
     </li>
@@ -936,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/structural%20patterns/flyweight/" class="md-nav__link">
+      <a href="../../structural%20patterns/flyweight/" class="md-nav__link">
         Flyweight Pattern
       </a>
     </li>
@@ -983,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../patterns/gang%20of%20four/behavioral%20patterns/iterator/" class="md-nav__link">
+      <a href="../../behavioral%20patterns/iterator/" class="md-nav__link">
         Iterator Pattern
       </a>
     </li>
@@ -1012,7 +965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../reference/" class="md-nav__link">
+      <a href="../../../../reference/" class="md-nav__link">
         参考目录
       </a>
     </li>
@@ -1046,8 +999,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    待更新。。。
+  <a href="#verdict" class="md-nav__link">
+    Verdict
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constant-pattern" class="md-nav__link">
+    Constant Pattern
   </a>
   
 </li>
@@ -1066,15 +1026,72 @@
                 
                   
 
-  <a href="https://github.com/Sakura4036/PythonGuide/edit/master/docs/guidelines/code_refactor.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/Sakura4036/PythonGuide/edit/master/docs/patterns/gang of four/python-specific patterns/global object.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="_1">代码重构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p><strong>有必要时就重构你的代码！</strong></p>
-<h2 id="_2">待更新。。。<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="global-object-pattern">Global Object Pattern<a class="headerlink" href="#global-object-pattern" title="Permanent link">&para;</a></h1>
+<h2 id="verdict">Verdict<a class="headerlink" href="#verdict" title="Permanent link">&para;</a></h2>
+<p>像其他几种脚本语言一样，Python 将每个模块的外层解析为普通代码。未加边框的赋值语句、表达式、甚至循环和条件语句都将在模块被导入时执行。这为用常量和数据结构来补充模块的类和函数提供了一个很好的机会，调用者会发现它很有用--但也提供了危险的诱惑：可变的全局对象会把远处的代码耦合起来，而 I/O 操作会带来导入时间的费用和副作用。</p>
+<p>每个 Python 模块都是一个独立的命名空间。像 <code>json</code> 这样的模块可以提供一个 <code>loads()</code> 函数，而不会与 <code>pickle</code> 模块中定义的完全不同的 <code>loads()</code> 函数发生冲突、替换或覆盖。</p>
+<p>独立的命名空间对于使编程语言具有可操作性至关重要。如果 Python 模块不是独立的名字空间，你将无法通过把注意力集中在你面前的模块上来阅读或编写 Python 代码 -- 一行代码可能会使用，或意外地与标准库中其他地方定义的名字或你安装的第三方模块冲突。如果一个第三方模块的新版本定义了一个新的全局，并与你的模块发生冲突，那么升级该模块可能会破坏你的整个程序。被迫在没有命名空间的语言中编码的程序员很快就会发现自己在全局名称中添加了前缀、后缀和额外的标点符号，以防止它们发生冲突。</p>
+<p>当然，每个函数和类都是一个对象--在 Python 中，<strong>所有东西都是一个对象</strong>——模块全局模式更具体地指的是在模块的全局级别上被赋予名字的普通对象实例。</p>
+<p>有两种模式使用了模块全局，但它们的重要性足以让它们有自己的文章。</p>
+<ul>
+<li><a href="https://python-patterns.guide/python/prebound-methods/">Prebound Methods</a> 是在一个模块构建一个对象时产生的，然后将该对象的一个或多个绑定方法分配给模块全局级别的名称。这些名字可以在以后用来调用这些方法，而不需要去找对象本身。</li>
+<li>虽然一个 <a href="https://python-patterns.guide/python/sentinel-object/">Sentinel Object</a> 不一定要生活在模块的全局命名空间中--一些哨兵对象被定义为类的属性，而另一些则是私有的，生活在一个闭包中--但许多哨兵，无论是在标准库中还是在其他地方，都被定义为模块全局并被访问。</li>
+</ul>
+<p>本文将介绍其他一些常见的情况。</p>
+<h2 id="constant-pattern">Constant Pattern<a class="headerlink" href="#constant-pattern" title="Permanent link">&para;</a></h2>
+<p>模块经常将有用的数字、字符串和其他值分配给其全局范围内的名字。标准库包括许多这样的赋值，我们可以从中摘录几个例子。</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">January</span> <span class="o">=</span> <span class="mi">1</span>                   <span class="c1"># calendar.py</span>
+<span class="n">WARNING</span> <span class="o">=</span> <span class="mi">30</span>                  <span class="c1"># logging.py</span>
+<span class="n">MAX_INTERPOLATION_DEPTH</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># configparser.py</span>
+<span class="n">SSL_HANDSHAKE_TIMEOUT</span> <span class="o">=</span> <span class="mf">60.0</span>  <span class="c1"># asyncio.constants.py</span>
+<span class="n">TICK</span> <span class="o">=</span> <span class="s2">&quot;&#39;&quot;</span>                    <span class="c1"># email.utils.py</span>
+<span class="n">CRLF</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>                 <span class="c1"># smtplib.py</span>
+</code></pre></div>
+记住，这些是 "常量"，只是在对象本身是不可改变的意义上。名称仍然可以被重新分配。</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">calendar</span>
+<span class="n">calendar</span><span class="o">.</span><span class="n">January</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">January</span><span class="p">)</span> <span class="c1"># 13</span>
+</code></pre></div>
+或被删除，对于这个问题。
+<div class="highlight"><pre><span></span><code><span class="k">del</span> <span class="n">calendar</span><span class="o">.</span><span class="n">January</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calendar</span><span class="o">.</span><span class="n">January</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  ...
+AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribute <span class="s1">&#39;January&#39;</span>
+</code></pre></div></p>
+<p>除了整数、浮点数和字符串之外，常量还包括不可变的容器，如 <code>tuples</code> 和 <code>frozen sets</code>。
+<div class="highlight"><pre><span></span><code><span class="n">all_errors</span> <span class="o">=</span> <span class="p">(</span><span class="n">Error</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">,</span> <span class="ne">EOFError</span><span class="p">)</span>  <span class="c1"># ftplib.py</span>
+<span class="n">bytes_types</span> <span class="o">=</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">bytearray</span><span class="p">)</span>         <span class="c1"># pickle.py</span>
+<span class="n">DIGITS</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>         <span class="c1"># sre_parse.py</span>
+</code></pre></div></p>
+<p>更专门的不可变数据类型也可以作为常量。
+<div class="highlight"><pre><span></span><code><span class="n">_EPOCH</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>  <span class="c1"># datetime</span>
+</code></pre></div></p>
+<p>在极少数情况下，代码中明显不打算修改的模块全局还是会使用可变数据结构。在 <code>frozenset</code> 发明之前的代码中，普通的可变集很常见。今天仍在使用字典，因为，不幸的是，标准库没有提供冻结字典。
+<div class="highlight"><pre><span></span><code><span class="c1"># socket.py</span>
+<span class="n">_blocking_errnos</span> <span class="o">=</span> <span class="p">{</span> <span class="n">EAGAIN</span><span class="p">,</span> <span class="n">EWOULDBLOCK</span> <span class="p">}</span>
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># locale.py</span>
+<span class="n">windows_locale</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="mh">0x0436</span><span class="p">:</span> <span class="s2">&quot;af_ZA&quot;</span><span class="p">,</span> <span class="c1"># Afrikaans</span>
+  <span class="mh">0x041c</span><span class="p">:</span> <span class="s2">&quot;sq_AL&quot;</span><span class="p">,</span> <span class="c1"># Albanian</span>
+  <span class="mh">0x0484</span><span class="p">:</span> <span class="s2">&quot;gsw_FR&quot;</span><span class="p">,</span><span class="c1"># Alsatian - France</span>
+  <span class="o">...</span>
+  <span class="mh">0x0435</span><span class="p">:</span> <span class="s2">&quot;zu_ZA&quot;</span><span class="p">,</span> <span class="c1"># Zulu</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>常量通常是作为重构引入的：程序员注意到相同的值 <code>60.0</code>反复出现在他们的代码中，因此为该值引入了一个常量<code>SSL_HANDSHAKE_TIMEOUT</code>。现在，每次使用这个名字都会导致在全局范围内进行搜索的轻微代价，但这被一些优势所平衡。常量的名称现在记录了值的含义，提高了代码的可读性。常量的赋值语句现在提供了一个单一的位置，将来可以在那里编辑这个值，而不需要在代码中寻找每个使用 <code>60.0</code> 的地方。</p>
+<p>这些优点是非常重要的，有时甚至会为一个只使用一次的值引入常量，将一个隐藏在代码深处的字词作为一个全局值提升到可见的位置。</p>
+<p>一些程序员把常量分配放在靠近使用它们的代码的地方；另一些程序员则把所有常量放在文件的顶部。除非常量被放在离代码很近的地方，以至于人类读者总是能看到它，否则把常量放在模块的顶部会更友好，便于那些还没有把编辑器配置为支持跳转定义的读者参考。</p>
+<p>另一种常量不是向内的，针对模块本身的代码，而是向外的，作为模块所宣传的 API 的一部分。像 <code>logging</code> 模块中的<code>WARNING</code> 这样的常量为调用者提供了常量的优势：代码将更加可读，常量的值可以在以后调整，而不需要每个调用者编辑他们的代码。</p>
+<p>你可能会想，一个供模块自己使用，但不供调用者使用的常量，总是以下划线开始，以标明它的私有。但是 Python 程序员在标记常量为私有时并不一致，也许是因为需要永远保留一个常量，因为调用者可能已经决定开始使用它，这比让一个辅助函数或类的 API 永远被锁定的代价要小。</p>
 
 
 
@@ -1090,42 +1107,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="页脚" >
-      
-        
-        <a href="../program_design/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 设计模式" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              设计模式
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../standard/language_rules/" class="md-footer__link md-footer__link--next" aria-label="下一页: 语言规范" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              语言规范
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1148,10 +1129,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
     
   </body>
