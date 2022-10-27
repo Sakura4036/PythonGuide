@@ -103,8 +103,7 @@ def func():
 	def anonymous_func():
 		nonlocal i
 		i = 2 
-		print(i) #
-		 i=2
+		print(i) # i=2
 	print(i) # i=2
 ```
 
@@ -140,6 +139,7 @@ return ((x, y, z)
 
 ## 迭代器与操作符
 容器类型，像字典和列表，定义了默认的迭代器和关系测试操作符(`in`和`not in`)。它们直接表达了操作，没有额外的方法调用。 使用默认操作符的函数是通用的。 它可以用于支持该操作的任何类型。
+
 **Good**
 ```python
 for key in adict: ...

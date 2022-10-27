@@ -272,9 +272,9 @@ Error: this is pretty severe
 ```
 但是请注意这个设计的对称性被打破的地方：虽然过滤器可以被堆叠，但是输出例程不能被合并或堆叠。日志信息仍然只能被写入一个输出。
 
-## 方案4 更优
+## 方案4 组合大于继承
 
-Python的日志模块想要更多的灵活性：不仅要支持多个过滤器，而且要支持单个日志信息流的多个输出。基于其他语言的日志模块的设计--主要的灵感请参见`PEP 282`的 "影响 "部分——Python的日志模块实现了自己的 `Composition Over Inheritance` 模式。
+Python的日志模块想要更多的灵活性：不仅要支持多个过滤器，而且要支持单个日志信息流的多个输出。基于其他语言的日志模块的设计--主要的灵感请参见`PEP 282`的 "影响 "部分——Python的日志模块实现了自己的 _Composition Over Inheritance_ 模式。
 
 1. 调用者与之交互的`Logger`类本身并不实现过滤或输出。相反，它维护了一个过滤器`logger`的列表和一个处理程序`handler`的列表。
 2. 对于每条日志消息，记录器都会调用它的每个过滤器。如果有任何过滤器拒绝该消息，该消息就会被丢弃。
@@ -395,3 +395,218 @@ logger.log('Error: this is important')
 5. **Efficiency**， 效率。我特意把这一点放在最后，因为可读性和可维护性通常是更重要的关注点。但是 `if` 语句之林的设计问题也体现在这种方法的低效率上。即使你想要一个简单的未经过滤的日志到一个文件中，每一条信息都将被迫针对你可能启用的每一个功能运行一个`if` 语句。相比之下，组合技术只对你所组合的功能运行代码。
 
 由于所有这些原因，我建议，从软件设计的角度来看， `if` 语句森林的表面简单性在很大程度上是一种错觉。将记录器自上而下地读成一段代码的能力是以其他几种概念上的花费为代价的，这些花费会随着代码库的大小而急剧增长。
+
+## Dodge: 多重继承
+
+一些 Python 项目没有实践 _Composition Over Inheritance_，因为他们想通过 Python 语言的一个有争议的特性来回避这个原则：多重继承。
+
+让我们回到我们开始时的例子代码，`FilteredLogger` 和 `SocketLogger` 是一个基础 `Logger` 类的两个不同子类。在一个只支持单继承的语言中，`FilteredSocketLogger` 必须选择从 `SocketLogger` 或 `FilteredLogger` 继承，然后必须重复另一个类的代码。
+
+但是 Python 支持多重继承，所以新的 `FilteredSocketLogger`可以将 `SocketLogger` 和 `FilteredLogger` 都列为基类，并从两者继承。
+
+```python
+# Our original example’s base class and subclasses.
+class Logger(object):
+    def __init__(self, file):
+        self.file = file
+
+    def log(self, message):
+        self.file.write(message + '\n')
+        self.file.flush()
+
+class SocketLogger(Logger):
+    def __init__(self, sock):
+        self.sock = sock
+
+    def log(self, message):
+        self.sock.sendall((message + '\n').encode('ascii'))
+
+class FilteredLogger(Logger):
+    def __init__(self, pattern, file):
+        self.pattern = pattern
+        super().__init__(file)
+
+    def log(self, message):
+        if self.pattern in message:
+            super().log(message)
+
+# A class derived through multiple inheritance.
+class FilteredSocketLogger(FilteredLogger, SocketLogger):
+    def __init__(self, pattern, sock):
+        FilteredLogger.__init__(self, pattern, None)
+        SocketLogger.__init__(self, sock)
+
+# Works just fine.
+
+logger = FilteredSocketLogger('Error', sock1)
+logger.log('Warning: not that important')
+logger.log('Error: this is important')
+
+print('The socket received: %r' % sock2.recv(512))
+```
+```
+The socket received: b'Error: this is important\n'
+```
+
+这与我们的 _Decorator Pattern_ 解决方案有几处惊人的相似之处。在这两种情况下。
+
+1. 每种输出都有一个记录器类（而不是我们的 `Adapter` 在直接写文件和通过`Adapter`写非文件之间的不对称）。
+2. `message` 保留了由调用者提供的精确值（而不是我们的`Adapter`习惯性地通过添加换行来替换它的文件特定值）。
+3. 过滤器和记录器是对称的，因为它们都实现了相同的方法 `log()`。(除了 _Decorator_ 之外，我们的其他解决方案是过滤器类提供一种方法，而输出类提供另一种方法)。
+4. 过滤器从不尝试自己产生输出，但如果一条消息在过滤过程中幸存下来，就会把输出的任务推迟到其他代码。
+
+这些与我们先前的 _Decorator_ 解决方案的密切相似性意味着我们可以将其与这段新代码进行比较，从而在 _Composition Over Inheritance_ 和多重继承之间进行异常鲜明的比较。让我们用一个问题进一步突出重点。
+
+__如果我们对记录器和过滤器都进行了彻底的单元测试，那么我们有多大把握让它们一起工作？__
+
+1. _Decorator_ 例子的成功只取决于每个类的公共行为：`LogFilter` 提供了一个`log()` 方法，该方法反过来调用它所包装的对象上的`log()` （测试可以用一个微小的假记录器简单地验证），并且每个记录器提供了一个有效的`log()` 方法。只要我们的单元测试验证了这两个公共行为，我们就不能在不通过单元测试的情况下破坏组合。
+
+    相比之下，多重继承依赖于那些无法通过简单实例化相关类来验证的行为。`FilteredLogger` 的公共行为是，它提供了一个`log()`方法，既能过滤又能写入文件。但是多重继承并不仅仅取决于公共行为，而是取决于该行为在内部的实现方式。如果该方法使用`super()` 定义其基类，那么多重继承将起作用，但如果该方法自己`write()` 到文件，则不会起作用，尽管这两种实现都能满足单元测试的要求。
+
+    因此，测试套件必须超越单元测试，对类进行实际的多重继承--或者用猴子补丁来验证`log()`调用`super().log()`——以保证多重继承在未来的开发者对代码的工作中保持有效。
+
+3. 多重继承引入了一个新的 `__init__()` 方法，因为基类的` __init__() `方法都不接受足够的参数用于组合过滤器和日志器。这段新的代码需要被测试，所以每个新的子类至少需要一个测试。
+
+    你可能会被诱惑去构思一个方案，以避免每个子类都有一个新的 `__init__()` ，比如接受 `*args` 然后将它们传递给 `super().__init__()`。(如果你真的采用这种方法，请回顾一下经典的文章 "[Python’s Super Considered Harmful](https://fuhm.net/super-harmful/)"，它论证了只有`**kwargs` 实际上是安全的。) 这种方案的问题在于它损害了可读性--你不能再仅仅通过阅读参数列表来弄清`__init__()` 方法需要哪些参数。而且类型检查工具将不再能够保证正确性。
+
+    但是无论你给每个派生类提供它自己的` __init__() `方法，还是把它们设计成链状，你对原始的 `FilteredLogger` 和 `SocketLogger` 的单元测试本身都不能保证这些类在组合时初始化正确。
+
+    相比之下，_Decorator_ 的设计让它的初始化器愉快地、严格地正交。过滤器接受它的`pattern`，记录器接受它的`sock`，两者之间不可能有冲突。
+
+4. 最后，有可能两个类本身工作得很好，但有相同名称的类或实例属性，当这些类通过多重继承组合在一起时，就会发生冲突。
+
+    是的，我们这里的小例子使碰撞的几率看起来很小，不用担心——但请记住，这些例子只是代表了你在实际应用中可能写的复杂得多的类。
+
+    无论程序员是通过在每个类的实例上运行 `dir()` 并检查它们的共同属性来编写防止碰撞的测试，还是为每个可能的子类编写集成测试，两个独立类的原始单元测试将再次无法保证它们能通过多重继承干净地结合起来。
+
+由于上述任何一个原因，两个基类的单元测试可以保持绿色，即使它们通过多重继承组合的能力被破坏。这意味着四人帮的 "支持每一种组合的子类爆炸 "也会影响你的测试。只有通过测试应用程序中 `m×n` 个基类的每个组合，你才能使应用程序在运行时安全地使用这些类。
+
+除了破坏单元测试的保证外，多重继承还涉及至少三个进一步的责任。
+
+4. 在  _Decorator_ 的情况下，自省很简单。只需`print(my_filter.logger)`或在调试器中查看该属性，就可以看到附加了什么样的输出记录器。然而，在多重继承的情况下，你只能通过检查类本身的元数据来了解哪个`filter`和`logger`被结合在一起——通过读取它的 `__mro__ `或者对对象进行一系列的 `isinstance()` 测试。
+5. 在 _Decorator_ 的情况下，将一个 过滤器 `filter`和记录器 `logger` 的实时组合，并在运行时通过对 `.logger` 属性的赋值换入一个不同的记录器——比如说，因为用户刚刚在应用程序的界面中切换了一个偏好，这是非常简单的。但在多继承的情况下，要做同样的事情，就需要采取更令人反感的手法，即覆盖对象的类。虽然在Python这样的动态语言中，在运行时改变一个对象的类并非不可能，但这通常被认为是软件设计出了问题的表现。
+6. 最后，多重继承没有提供内置的机制来帮助程序员正确排列基类。如果 `FilteredSocketLogger` 的基类被调换，它就不能成功地写入一个套接字，而且正如Stack Overflow上的许多问题所证明的那样，Python程序员在把第三方基类放在正确的顺序上方面一直有困难。相比之下，_Decorator_ 模式使类的组成方式显而易见：过滤器的 `__init__() `想要一个`logger` 对象，但记录器的 `__init__()` 并不要求一个`filter`
+
+那么，多重继承就会产生一些责任，而没有增加任何优势。至少在这个例子中，用继承来解决设计问题，严格来说比基于组合的设计要差。
+
+## Dodge: 混合
+
+ 上一节中的 `FilteredSocketLogger` 需要它自己的自定义 `_init__()` 方法，因为它需要接受其两个基类的参数。但事实证明，这种责任是可以避免的。当然，在子类不需要任何额外数据的情况下，这个问题就不会出现。但即使是需要额外数据的类，也可以通过其他方式来传递数据。
+
+如果我们在类本身中为`pattern`提供一个默认值，然后邀请调用者在初始化的范围之外直接定制该属性，我们可以使`FilteredLogger`对多重继承更加友好。
+
+```python
+# Don’t accept a “pattern” during initialization.
+class FilteredLogger(Logger):
+    pattern = ''
+
+    def log(self, message):
+        if self.pattern in message:
+            super().log(message)
+
+# Multiple inheritance is now simpler.
+class FilteredSocketLogger(FilteredLogger, SocketLogger):
+    pass  # This subclass needs no extra code!
+
+# The caller can just set “pattern” directly.
+logger = FilteredSocketLogger(sock1)
+logger.pattern = 'Error'
+
+# Works just fine.
+logger.log('Warning: not that important')
+logger.log('Error: this is important')
+
+print('The socket received: %r' % sock2.recv(512))
+```
+```
+The socket received: b'Error: this is important\n'
+```
+在将 `FilteredLogger` 转向与其基类正交的初始化手法之后，为什么不将正交的想法推向其逻辑结论呢？我们可以将 `FilteredLogger` 转换为一个 "mixin(混合器)"，它完全生活在类的层次结构之外，多重继承将使它与之结合。
+
+```python
+# Simplify the filter by making it a mixin.
+class FilterMixin:  # No base class!
+    pattern = ''
+
+    def log(self, message):
+        if self.pattern in message:
+            super().log(message)
+
+# Multiple inheritance looks the same as above.
+class FilteredLogger(FilterMixin, FileLogger):
+    pass  # Again, the subclass needs no extra code.
+
+# Works just fine.
+logger = FilteredLogger(sys.stdout)
+logger.pattern = 'Error'
+logger.log('Warning: not that important')
+logger.log('Error: this is important')
+```
+```
+Error: this is important
+```
+
+_mixin_ 在概念上比我们在上一节看到的过滤子类更简单：它没有可能使方法解析顺序复杂化的基类，所以`super()`将总是调用类声明中列出的下一个基类。
+
+与同等的子类相比，_mixin_ 也有一个更简单的测试故事。`FilteredLogger` 需要测试它独立运行并与其他类结合，而`FilterMixin` 只需要测试它与记录器的结合。因为 _mixin_ 本身是不完整的，甚至不能写一个独立运行的测试。
+
+但所有其他的多重继承的责任仍然适用。因此，虽然 _mixin_ 模式确实改善了多重继承的可读性和概念上的简单性，但它并不是解决其问题的完整方案。
+
+## Dodge: 动态建类
+
+正如我们在前两节所看到的，无论是传统的多重继承还是混搭，都没有解决四人帮的 "支持每一种组合的子类爆炸 "的问题--它们只是在需要组合两个类的时候避免了代码的重复。
+
+在一般情况下，多重继承仍然需要 "大量的类"，有 _m×n_ 个类声明，每个声明看起来都是这样。
+
+```python
+class FilteredSocketLogger(FilteredLogger, SocketLogger):
+    ...
+```
+
+但事实证明，Python提供了一个变通方法。
+
+想象一下，我们的应用程序读取一个配置文件来学习它应该使用的日志过滤器和日志目的地，这个文件的内容在运行时才会知道。与其提前建立所有 _m×n_ 个可能的类，然后选择正确的一个，我们可以等待，并利用 Python 不仅支持类声明，还支持一个内置的 `type()` 函数，在运行时动态地创建新的类。
+
+```python
+# Imagine 2 filtered loggers and 3 output loggers.
+
+filters = {
+    'pattern': PatternFilteredLog,
+    'severity': SeverityFilteredLog,
+}
+outputs = {
+    'file': FileLog,
+    'socket': SocketLog,
+    'syslog': SyslogLog,
+}
+
+# Select the two classes we want to combine.
+
+with open('config') as f:
+    filter_name, output_name = f.read().split()
+
+filter_cls = filters[filter_name]
+output_cls = outputs[output_name]
+
+# Build a new derived class (!)
+
+name = filter_name.title() + output_name.title() + 'Log'
+cls = type(name, (filter_cls, output_cls), {})
+
+# Call it as usual to produce an instance.
+
+logger = cls(...)
+```
+
+传递给 `type()`的类的元组与类声明中的一系列基类具有相同的意义。上面的 `type()`调用通过对过滤型记录器和输出型记录器的多重继承创建了一个新的类。
+
+在你问之前：是的，以纯文本形式构建类声明，然后将其传递给`eval()`，也是可以的。
+
+但即时构建类会带来严重的后果。
+
+- 可读性受到影响。一个人在阅读上面的代码片段时，必须做额外的工作来确定 `cls` 的实例是什么样的对象。另外，许多 Python 程序员并不熟悉 `type()` ，他们需要停下来仔细研究其文档。如果他们对类可以被动态定义这一新颖的概念有困难，他们可能还会感到困惑。
+- 如果一个像`PatternFilteredFileLog` 这样的构造类在异常或错误信息中被命名，开发者可能会不高兴地发现，当他们在代码中搜索这个类的名字时，什么都没有出现。当你甚至无法找到一个类的时候，调试就变得更加困难。相当多的时间可能被用来搜索代码库中的`type()`调用，并试图确定哪一个生成了这个类。有时，开发者不得不用坏的参数来调用每个方法，并使用所产生的回溯中的行号来追踪基类的位置。
+- 在一般情况下，对于在运行时动态构建的类，类型自省会失败。当你在调试器中高亮显示`PatternFilteredFileLog`的实例时，编辑器中的 "跳转到类 "快捷键将无法带你到任何地方。像 [mypy](https://github.com/python/mypy) 和 [pyre-check](https://github.com/facebook/pyre-check) 这样的类型检查引擎将不可能为你生成的类提供强大的保护，因为它们能够为普通的 Python 类提供保护。
+- 美丽的 Jupyter 笔记本功能 `%autoreload` 拥有一种近乎超自然的能力，可以在实时 Python 解释器中检测并重新加载修改过的源代码。但是它被挫败了，例如，[matplotlib 在运行时](https://github.com/matplotlib/matplotlib/blob/54b426397c0e7567edaee4f7f77036c2b8569573/lib/matplotlib/axes/_subplots.py#L180) 通过`subplot_class_factory()` 中的`type()`调用建立的多个继承类。
+
+一旦权衡了它的责任，试图使用运行时类的生成作为最后的手段来挽救已经有问题的多重继承机制的做法，是对当你需要一个对象的行为在几个独立的轴上变化时，躲避组成大于继承的整个项目的一种归纳和荒谬。
