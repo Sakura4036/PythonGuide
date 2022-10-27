@@ -22,9 +22,22 @@ nav:
     - 设计模式: 
         - 设计模式: patterns/patterns.md
         - 基础原则: patterns/gang of four/principles.md
-        - 创建型模式: patterns/gang of four/creational patterns.md
-        - 结构型模式: patterns/gang of four/structural patterns.md
-        - 行为型模式: patterns/gang of four/behavioral patterns.md
+        - Python-Specific模式: 
+            - Global Object Pattern: patterns/gang of four/python-specific/global object.md
+            - Prebound Method Pattern: patterns/gang of four/python-specific/prebound method.md
+            - Sentinel Object Pattern: patterns/gang of four/python-specific/sentinel object.md
+        - 创建型模式: 
+            - Abstract Factory Pattern: patterns/gang of four/creational patterns/abstract factory.md
+            - Builder Pattern: patterns/gang of four/creational patterns/builder.md
+            - Factory Method Pattern: patterns/gang of four/creational patterns/factory method.md
+            - Prototype Pattern: patterns/gang of four/creational patterns/prototype.md
+            - Singleton Pattern: patterns/gang of four/creational patterns/singleton.md
+        - 结构型模式: 
+            - Composite Pattern: patterns/gang of four/structural patterns/composite.md
+            - Decorator Pattern: patterns/gang of four/structural patterns/decorator.md
+            - Flyweight Pattern: patterns/gang of four/structural patterns/flyweight.md
+        - 行为型模式: 
+            - Iterator Pattern: patterns/gang of four/behavioral patterns/iterator.md
 
     - 参考目录: reference.md
 
