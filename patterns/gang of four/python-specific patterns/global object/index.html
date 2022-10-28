@@ -1161,11 +1161,11 @@
 <p>像其他几种脚本语言一样，Python 将每个模块的外层解析为普通代码。未加边框的赋值语句、表达式、甚至循环和条件语句都将在模块被导入时执行。这为用常量和数据结构来补充模块的类和函数提供了一个很好的机会，调用者会发现它很有用--但也提供了危险的诱惑：可变的全局对象会把远处的代码耦合起来，而 I/O 操作会带来导入时间的费用和副作用。</p>
 <p>每个 Python 模块都是一个独立的命名空间。像 <code>json</code> 这样的模块可以提供一个 <code>loads()</code> 函数，而不会与 <code>pickle</code> 模块中定义的完全不同的 <code>loads()</code> 函数发生冲突、替换或覆盖。</p>
 <p>独立的命名空间对于使编程语言具有可操作性至关重要。如果 Python 模块不是独立的名字空间，你将无法通过把注意力集中在你面前的模块上来阅读或编写 Python 代码 -- 一行代码可能会使用，或意外地与标准库中其他地方定义的名字或你安装的第三方模块冲突。如果一个第三方模块的新版本定义了一个新的全局，并与你的模块发生冲突，那么升级该模块可能会破坏你的整个程序。被迫在没有命名空间的语言中编码的程序员很快就会发现自己在全局名称中添加了前缀、后缀和额外的标点符号，以防止它们发生冲突。</p>
-<p>当然，每个函数和类都是一个对象--在 Python 中，<strong>所有东西都是一个对象</strong>——模块全局模式更具体地指的是在模块的全局级别上被赋予名字的普通对象实例。</p>
+<p>当然，每个函数和类都是一个对象（在 Python 中，<strong>所有东西都是一个对象</strong>），模块全局模式更具体地指的是 <strong>在模块的全局级别上被赋予名字的普通对象实例。</strong></p>
 <p>有两种模式使用了模块全局，但它们的重要性足以让它们有自己的文章。</p>
 <ul>
 <li><a href="https://python-patterns.guide/python/prebound-methods/">Prebound Methods</a> 是在一个模块构建一个对象时产生的，然后将该对象的一个或多个绑定方法分配给模块全局级别的名称。这些名字可以在以后用来调用这些方法，而不需要去找对象本身。</li>
-<li>虽然一个 <a href="https://python-patterns.guide/python/sentinel-object/">Sentinel Object</a> 不一定要生活在模块的全局命名空间中--一些哨兵对象被定义为类的属性，而另一些则是私有的，生活在一个闭包中--但许多哨兵，无论是在标准库中还是在其他地方，都被定义为模块全局并被访问。</li>
+<li>虽然一个 <a href="https://python-patterns.guide/python/sentinel-object/">Sentinel Object</a> 不一定要生活在模块的全局命名空间中，一些 Sentinel Object （哨兵对象）被定义为类的属性，而另一些则是私有的，生活在一个闭包中，但许多哨兵，无论是在标准库中还是在其他地方，都被定义为模块全局并被访问。</li>
 </ul>
 <p>本文将介绍其他一些常见的情况。</p>
 <h2 id="_3">常量模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -1237,19 +1237,17 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 <span class="k">def</span> <span class="nf">_f</span><span class="p">():</span> <span class="k">pass</span>
 <span class="n">FunctionType</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">_f</span><span class="p">)</span>
 </code></pre></div>
-<p>一方面，这使得 <code>types</code> 模块看起来几乎是多余的--你总是可以用同样的技巧来发现 <code>FunctionType</code>。但另一方面，从 <code>types</code> 中导入它让常量模式的两个主要优点都得到了体现：代码变得更易读，因为 <code>FunctionType</code> 在任何地方都有相同的名字，而且更有效率，因为无论一个大系统中有多少模块可能使用它，常量都只需要计算一次。</p>
+<p>一方面，这使得 <code>types</code> 模块看起来几乎是多余的，你总是可以用同样的技巧来发现 <code>FunctionType</code>。但另一方面，从 <code>types</code> 中导入它让常量模式的两个主要优点都得到了体现：代码变得更易读，因为 <code>FunctionType</code> 在任何地方都有相同的名字，而且更有效率，因为无论一个大系统中有多少模块可能使用它，常量都只需要计算一次。</p>
 <h2 id="dunder">Dunder 常量<a class="headerlink" href="#dunder" title="Permanent link">&para;</a></h2>
-<p>在模块全局层面定义的常量的一个特例是 "dunder "常量，其名称**以双下划线开始和结束**，如：<code>__name__</code>，<code>__file__</code>。</p>
-<p>有几个模块全局的dunder常量是由语言本身设置的。对于官方列表，请在 Python Reference 关于<a href="https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy">标准类型层次结构</a>的章节中寻找 "模块 "子标题。最常遇到的两个是 <code>__name__</code>，程序需要检查它，因为 Python 可怕的设计决定给从命令行调用的模块分配一个假名字<code>'__main__'</code>，以及 <code>__file__</code>，模块的 Python 文件本身的完整文件系统路径 - 它几乎被普遍用来寻找包含在软件包中的数据文件，尽管现在官方的建议是使用 <code>pkgutil.get_data()</code> 来代替。</p>
+<p>在模块全局层面定义的常量的一个特例是 "dunder "常量，其名称 <strong>以双下划线开始和结束</strong>，如：<code>__name__</code>，<code>__file__</code>。</p>
+<p>有几个模块全局的dunder常量是由语言本身设置的。对于官方列表，请在 Python Reference 关于<a href="https://docs.python.org/3/reference/datamodel.html#the-standard-type-hierarchy">标准类型层次结构</a>的章节中寻找 "模块 "子标题。最常遇到的两个是 <code>__name__</code>，程序需要检查它，因为 Python 可怕的设计决定给从命令行调用的模块分配一个假名字<code>'__main__'</code>，以及 <code>__file__</code>，模块的 Python 文件本身的完整文件系统路径 ,它几乎被普遍用来寻找包含在软件包中的数据文件，尽管现在官方的建议是使用 <code>pkgutil.get_data()</code> 来代替。</p>
 <div class="highlight"><pre><span></span><code><span class="n">here</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
 </code></pre></div>
-<p>除了语言运行时设置的_dunder_ 常量之外，如果一个模块选择设置，还有一个Python认可的常量：如果 <code>__all__</code> 被分配了一连串的标识符，那么只有这些名字会被导入到另一个 <code>from ... import *</code> 的模块。你可能已经预料到 <code>__all__</code> 会随着 <code>import *</code>获得反模式的声誉而变得不那么流行，但它却获得了快乐的第二职业，限制了自动文档引擎如 <a href="http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">Sphinx autodoc </a>模块所包含的符号列表。</p>
+<p>除了语言运行时设置的 <em>dunder</em> 常量之外，如果一个模块选择设置，还有一个Python认可的常量：如果 <code>__all__</code> 被分配了一连串的标识符，那么只有这些名字会被导入到另一个 <code>from ... import *</code> 的模块。你可能已经预料到 <code>__all__</code> 会随着 <code>import *</code>获得反模式的声誉而变得不那么流行，但它却获得了快乐的第二职业，限制了自动文档引擎如 <a href="http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html">Sphinx autodoc </a>模块所包含的符号列表。</p>
 <p>尽管大多数模块从未打算修改 <code>__all__</code>，但它们还是莫名其妙地将其指定为一个 Python 列表。使用一个元组更为优雅。</p>
-<p>除了这些官方的错误常量，一些模块--尽管很多人觉得错误的名字不吸引人--还沉迷于创建更多的错误。像 <code>__author__</code> 和 <code>__version__</code> 这样的名字的赋值散布在标准库和其他地方。虽然它们的出现并不一致，以至于工具可以假定它们的存在，但偶尔的读者可能会发现它们是有信息的，而且它们比官方的包元数据更容易得到。</p>
+<p>除了这些官方的错误常量，一些模块，尽管很多人觉得错误的名字不吸引人，还沉迷于创建更多的错误。像 <code>__author__</code> 和 <code>__version__</code> 这样的名字的赋值散布在标准库和其他地方。虽然它们的出现并不一致，以至于工具可以假定它们的存在，但偶尔的读者可能会发现它们是有信息的，而且它们比官方的包元数据更容易得到。</p>
 <p>请注意，即使在标准库中，关于<code>__author__</code>应该是什么类型，似乎也没有达成一致。</p>
-<p><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">Sphinx</span> <span class="n">autodoc</span> <span class="n">module</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">sphinx</span><span class="o">-</span><span class="n">doc</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">en</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">usage</span><span class="o">/</span><span class="n">extensions</span><span class="o">/</span><span class="n">autodoc</span><span class="o">.</span><span class="n">html</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># inspect.py</span>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># inspect.py</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Ka-Ping Yee &lt;ping@lfw.org&gt;&#39;</span><span class="p">,</span>
               <span class="s1">&#39;Yury Selivanov &lt;yselivanov@sprymix.com&gt;&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -1260,8 +1258,8 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 </code></pre></div></p>
 <p>为了避免围绕这些非正式和临时的元数据约定的不一致，一个期望用 <code>pip</code> 安装的包可以直接从 Python 包安装系统中了解其他已安装包的名称和版本。更多的信息可以在 setuptools 文档中的 <a href="https://setuptools.readthedocs.io/en/latest/pkg_resources.html">pkg_resources</a> 模块中找到。</p>
 <h2 id="_5">全局对象模式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>在成熟的全局对象模式中，就像在常量模式中一样，一个模块在导入时实例化一个对象，并在模块的全局范围内给它分配一个名字。但这个对象并不是简单地作为数据使用；它不仅仅是一个整数、字符串或数据结构。相反，该对象是为了它所提供的方法而提供的--为了它所能执行的动作。</p>
-<p>最简单的全局对象是不可改变的。一个常见的例子是编译的正则表达式--这里有几个来自标准库的例子。</p>
+<p>在成熟的全局对象模式中，就像在常量模式中一样，一个模块在导入时实例化一个对象，并在模块的全局范围内给它分配一个名字。但这个对象并不是简单地作为数据使用；它不仅仅是一个整数、字符串或数据结构。相反，该对象是为了它所提供的方法而提供的，为了它所能执行的动作。</p>
+<p>最简单的全局对象是不可改变的。一个常见的例子是编译的正则表达式，这里有几个来自标准库的例子。</p>
 <div class="highlight"><pre><span></span><code><span class="n">escapesre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[</span><span class="se">\\</span><span class="s1">&quot;]&#39;</span><span class="p">)</span>       <span class="c1"># email/utils.py</span>
 <span class="n">magic_check</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;([*?[])&#39;</span><span class="p">)</span>    <span class="c1"># glob.py</span>
 <span class="n">commentclose</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;--\s*&gt;&#39;</span><span class="p">)</span>   <span class="c1"># html/parser.py</span>
@@ -1277,7 +1275,7 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 <p>顺便说一下，如果你把正则表达式移到类属性中，而不是把它一直移到全局范围，那么这一系列的权衡也是一样的。当我最终能写到 Python 和类时，我会从这里链接到关于类属性的进一步思考。</p>
 <h2 id="_6">可变全局对象<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>但是，全局对象是可变的，怎么办？</p>
-<p>当它们包裹着系统资源时，是最容易被证明的，因为这些资源从本质上来说也是操作系统进程的全局资源。标准库中的一个例子是 <code>environ</code> 对象，它给你的 Python 程序提供了 "environment"--提供你的时区、终端类型等的文本键和值--它是从你的 Python 程序的父进程中传递过来的。</p>
+<p>当它们包裹着系统资源时，是最容易被证明的，因为这些资源从本质上来说也是操作系统进程的全局资源。标准库中的一个例子是 <code>environ</code> 对象，它给你的 Python 程序提供了 "environment"--提供你的时区、终端类型等的文本键和值，它是从你的 Python 程序的父进程中传递过来的。</p>
 <p>现在，你的程序是否真的应该在运行时向它的环境中写入新的值，这一点是可以争论的。如果你正在启动一个需要调整环境变量的 <code>subprocess</code>，子进程例程会提供一个 <code>env</code> 参数。但是如果代码确实需要操作这个全局资源，那么由一个相应的全局 Python 对象来调解这种访问是合理的。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># os.py</span>
 <span class="n">environ</span> <span class="o">=</span> <span class="n">_createenviron</span><span class="p">()</span>
