@@ -2,137 +2,137 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/git/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/reference/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/code_lint/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/code_refactor/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/configuration/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/document/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/logging/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/program_design/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/project_structure/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/guidelines/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83%E6%89%8B%E5%86%8C/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/patterns/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/principles/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/behavioral%20patterns/iterator/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/abstract%20factory/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/builder/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/factory%20method/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/prototype/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/singleton/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/global%20object/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/prebound%20method/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/sentinel%20object/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/composite/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/decorator/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/structural%20patterns/flyweight/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/standard/language_rules/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://github.com/Sakura4036/PythonGuide/standard/style_rules/</loc>
-         <lastmod>2022-10-27</lastmod>
+         <lastmod>2022-10-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
