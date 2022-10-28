@@ -23,9 +23,9 @@ nav:
         - 设计模式: patterns/patterns.md
         - 基础原则: patterns/gang of four/principles.md
         - Python-Specific模式: 
-            - Global Object Pattern: patterns/gang of four/python-specific/global object.md
-            - Prebound Method Pattern: patterns/gang of four/python-specific/prebound method.md
-            - Sentinel Object Pattern: patterns/gang of four/python-specific/sentinel object.md
+            - 全局对象模式: patterns/gang of four/python-specific patterns/global object.md
+            - Prebound Method Pattern: patterns/gang of four/python-specific patterns/prebound method.md
+            - Sentinel Object Pattern: patterns/gang of four/python-specific patterns/sentinel object.md
         - 创建型模式: 
             - Abstract Factory Pattern: patterns/gang of four/creational patterns/abstract factory.md
             - Builder Pattern: patterns/gang of four/creational patterns/builder.md
