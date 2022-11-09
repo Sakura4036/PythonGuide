@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/global%20object/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
     
     
       
@@ -22,7 +22,7 @@
       <link rel="stylesheet" href="../../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.815d1a91.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -58,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
   
     
     
@@ -724,20 +724,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    建议
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
     常量模式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     计算导入时间
   </a>
   
@@ -751,14 +744,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     全局对象模式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     可变全局对象
   </a>
   
@@ -801,7 +794,7 @@
   
     <li class="md-nav__item">
       <a href="../sentinel%20object/" class="md-nav__link">
-        Sentinel Object Pattern
+        哨兵模式
       </a>
     </li>
   
@@ -1089,20 +1082,13 @@
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    建议
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
     常量模式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     计算导入时间
   </a>
   
@@ -1116,14 +1102,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     全局对象模式
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     可变全局对象
   </a>
   
@@ -1157,7 +1143,7 @@
 
 
 <h1 id="_1">全局对象模式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">建议<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>原文：<a href="https://python-patterns.guide/python/module-globals/">The Global Object Pattern</a></p>
 <p>像其他几种脚本语言一样，Python 将每个模块的外层解析为普通代码。未加边框的赋值语句、表达式、甚至循环和条件语句都将在模块被导入时执行。这为用常量和数据结构来补充模块的类和函数提供了一个很好的机会，调用者会发现它很有用--但也提供了危险的诱惑：可变的全局对象会把远处的代码耦合起来，而 I/O 操作会带来导入时间的费用和副作用。</p>
 <p>每个 Python 模块都是一个独立的命名空间。像 <code>json</code> 这样的模块可以提供一个 <code>loads()</code> 函数，而不会与 <code>pickle</code> 模块中定义的完全不同的 <code>loads()</code> 函数发生冲突、替换或覆盖。</p>
 <p>独立的命名空间对于使编程语言具有可操作性至关重要。如果 Python 模块不是独立的名字空间，你将无法通过把注意力集中在你面前的模块上来阅读或编写 Python 代码 -- 一行代码可能会使用，或意外地与标准库中其他地方定义的名字或你安装的第三方模块冲突。如果一个第三方模块的新版本定义了一个新的全局，并与你的模块发生冲突，那么升级该模块可能会破坏你的整个程序。被迫在没有命名空间的语言中编码的程序员很快就会发现自己在全局名称中添加了前缀、后缀和额外的标点符号，以防止它们发生冲突。</p>
@@ -1168,7 +1154,7 @@
 <li>虽然一个 <a href="https://python-patterns.guide/python/sentinel-object/">Sentinel Object</a> 不一定要生活在模块的全局命名空间中，一些 Sentinel Object （哨兵对象）被定义为类的属性，而另一些则是私有的，生活在一个闭包中，但许多哨兵，无论是在标准库中还是在其他地方，都被定义为模块全局并被访问。</li>
 </ul>
 <p>本文将介绍其他一些常见的情况。</p>
-<h2 id="_3">常量模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_2">常量模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>模块经常将有用的数字、字符串和其他值分配给其全局范围内的名字。标准库包括许多这样的赋值，我们可以从中摘录几个例子。</p>
 <p><div class="highlight"><pre><span></span><code><span class="n">January</span> <span class="o">=</span> <span class="mi">1</span>                   <span class="c1"># calendar.py</span>
 <span class="n">WARNING</span> <span class="o">=</span> <span class="mi">30</span>                  <span class="c1"># logging.py</span>
@@ -1216,7 +1202,7 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 <p>一些程序员把常量分配放在靠近使用它们的代码的地方；另一些程序员则把所有常量放在文件的顶部。除非常量被放在离代码很近的地方，以至于人类读者总是能看到它，否则把常量放在模块的顶部会更友好，便于那些还没有把编辑器配置为支持跳转定义的读者参考。</p>
 <p>另一种常量不是向内的，针对模块本身的代码，而是向外的，作为模块所宣传的 API 的一部分。像 <code>logging</code> 模块中的<code>WARNING</code> 这样的常量为调用者提供了常量的优势：代码将更加可读，常量的值可以在以后调整，而不需要每个调用者编辑他们的代码。</p>
 <p>你可能会想，一个供模块自己使用，但不供调用者使用的常量，总是以下划线开始，以标明它的私有。但是 Python 程序员在标记常量为私有时并不一致，也许是因为需要永远保留一个常量，因为调用者可能已经决定开始使用它，这比让一个辅助函数或类的 API 永远被锁定的代价要小。</p>
-<h2 id="_4">计算导入时间<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_3">计算导入时间<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>有时引入常量是为了提高效率，以避免每次调用代码时重新计算一个值。例如，尽管在所有的现代 Python 实现中，涉及字面数字的数学运算实际上已经被优化掉了，但开发者仍然经常感到更舒服，通过把结果分配给一个模块的全局，明确表示数学运算应该在导入时完成。</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1"># zipfile.py</span>
 <span class="n">ZIP_FILECOUNT_LIMIT</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
@@ -1257,7 +1243,7 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;0.9.0&quot;</span>  <span class="c1"># tarfile.py</span>
 </code></pre></div></p>
 <p>为了避免围绕这些非正式和临时的元数据约定的不一致，一个期望用 <code>pip</code> 安装的包可以直接从 Python 包安装系统中了解其他已安装包的名称和版本。更多的信息可以在 setuptools 文档中的 <a href="https://setuptools.readthedocs.io/en/latest/pkg_resources.html">pkg_resources</a> 模块中找到。</p>
-<h2 id="_5">全局对象模式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">全局对象模式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>在成熟的全局对象模式中，就像在常量模式中一样，一个模块在导入时实例化一个对象，并在模块的全局范围内给它分配一个名字。但这个对象并不是简单地作为数据使用；它不仅仅是一个整数、字符串或数据结构。相反，该对象是为了它所提供的方法而提供的，为了它所能执行的动作。</p>
 <p>最简单的全局对象是不可改变的。一个常见的例子是编译的正则表达式，这里有几个来自标准库的例子。</p>
 <div class="highlight"><pre><span></span><code><span class="n">escapesre</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[</span><span class="se">\\</span><span class="s1">&quot;]&#39;</span><span class="p">)</span>       <span class="c1"># email/utils.py</span>
@@ -1273,7 +1259,7 @@ AttributeError: module <span class="s1">&#39;calendar&#39;</span> has no attribu
 <li>与本地使用的正则表达式在更大的表达式中匿名使用相比，全局名称将使调用的代码更具可读性。(如果可读性是唯一的关注点，记住你可以将正则表达式的字符串定义为全局，但跳过在模块级编译它的成本）。</li>
 </ul>
 <p>顺便说一下，如果你把正则表达式移到类属性中，而不是把它一直移到全局范围，那么这一系列的权衡也是一样的。当我最终能写到 Python 和类时，我会从这里链接到关于类属性的进一步思考。</p>
-<h2 id="_6">可变全局对象<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">可变全局对象<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>但是，全局对象是可变的，怎么办？</p>
 <p>当它们包裹着系统资源时，是最容易被证明的，因为这些资源从本质上来说也是操作系统进程的全局资源。标准库中的一个例子是 <code>environ</code> 对象，它给你的 Python 程序提供了 "environment"--提供你的时区、终端类型等的文本键和值，它是从你的 Python 程序的父进程中传递过来的。</p>
 <p>现在，你的程序是否真的应该在运行时向它的环境中写入新的值，这一点是可以争论的。如果你正在启动一个需要调整环境变量的 <code>subprocess</code>，子进程例程会提供一个 <code>env</code> 参数。但是如果代码确实需要操作这个全局资源，那么由一个相应的全局 Python 对象来调解这种访问是合理的。</p>

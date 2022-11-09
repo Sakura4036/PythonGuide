@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/python-specific%20patterns/prebound%20method/">
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.9">
     
     
       
@@ -22,7 +22,7 @@
       <link rel="stylesheet" href="../../../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.815d1a91.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -58,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
   
     
     
@@ -766,7 +766,7 @@
   
     <li class="md-nav__item">
       <a href="../sentinel%20object/" class="md-nav__link">
-        Sentinel Object Pattern
+        哨兵模式
       </a>
     </li>
   
@@ -1087,6 +1087,7 @@
 
 
 <h1 id="_1">预绑定方法模式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>原文：<a href="https://python-patterns.guide/python/prebound-methods/">The Prebound Method Pattern</a></p>
 <p>在某些情况下，一个 Python 模块希望在模块的全局命名空间中提供几个例程，这些例程在运行时需要彼此共享状态。</p>
 <p>最著名的例子可能是 Python 标准库的 <code>random</code> 模块。虽然它确实为高级用户提供了建立他们自己的<code>random</code> 实例的选项，但大多数程序员选择了在模块的全局命名空间中提供的方便的例程--像 <code>randrange()</code>、<code>randint()</code>和 <code>choice()</code>--它们反映了一个随机对象的方法。</p>
 <p>这些顶级例程是如何共享状态的？</p>
@@ -1234,13 +1235,13 @@
       
       
         
-        <a href="../sentinel%20object/" class="md-footer__link md-footer__link--next" aria-label="下一页: Sentinel Object Pattern" rel="next">
+        <a href="../sentinel%20object/" class="md-footer__link md-footer__link--next" aria-label="下一页: 哨兵模式" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Sentinel Object Pattern
+              哨兵模式
             </div>
           </div>
           <div class="md-footer__button md-icon">
