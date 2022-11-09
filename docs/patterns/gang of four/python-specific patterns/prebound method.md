@@ -1,5 +1,7 @@
 # 预绑定方法模式
 
+原文：[The Prebound Method Pattern](https://python-patterns.guide/python/prebound-methods/)
+
 在某些情况下，一个 Python 模块希望在模块的全局命名空间中提供几个例程，这些例程在运行时需要彼此共享状态。
 
 最著名的例子可能是 Python 标准库的 `random` 模块。虽然它确实为高级用户提供了建立他们自己的`random` 实例的选项，但大多数程序员选择了在模块的全局命名空间中提供的方便的例程--像 `randrange()`、`randint()`和 `choice() `--它们反映了一个随机对象的方法。
