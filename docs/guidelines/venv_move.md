@@ -1,10 +1,10 @@
 # python 环境移植
 
-## 在线版
+## 1. 在线安装
 
-### conda 版本
+### 1.1 使用 conda 安装
 
-#### 项目环境安装
+#### 1.1.1 项目环境安装
 
 1.  安装 conda 或者 miniconda：
 
@@ -30,15 +30,15 @@
 
     `pip freeze > requirements.txt`
 
-#### 项目环境移植
+#### 1.1.2 项目环境移植
 
 安装步骤同`项目环境安装`&#x20;
 
-### 2. 直接安装/venv 安装
+### 1.2 使用 python venv 安装
 
 > **conda 环境也可以使用 python3 安装 venv**
 
-#### 项目环境安装
+#### 1.2.1 项目环境安装
 
 1.  安装指定版本 python，例如 python 3.9
 
@@ -62,25 +62,31 @@
 
     `pip freeze > requirements.txt`
 
-#### 项目环境移植
+#### 1.2.2 项目环境移植
 
 安装步骤同**项目环境安装**
 
-## 离线移植
+## 2. 离线移植
 
-### 离线 python 安装
+### 2.1 离线 python 安装
 
 1.  python 二进程程序下载
 
 2.  python 源码安装
 
 > python 下载官网：<https://www.python.org/downloads/>
+>
+> 安装指定版本 python，例如 python 3.9
+>
+> - [python 3.9.13](https://www.python.org/downloads/release/python-3913/)最后一个提供二进制安装程序的 python 版本
+>
+> - [python 3.9.14](https://www.python.org/downloads/)及以上版本只提供源码安装： `setup.py install`
 
-### 环境移植
+### 2.2 环境移植
 
-### &#x20;venv 打包移植
+#### 2.2.1 venv 打包移植
 
-#### 直接环境打包移植
+##### 2.2.1.1 直接打包 venv
 
 1.  直接将原主机下安装的 venv 文件夹进行打包，例如 venv 环境 py39 打包成 py39.zip，发送至目标主机，项目文件夹下或者任意文件夹下解压
 
@@ -100,11 +106,9 @@
 
     > venv 文档：<https://docs.python.org/zh-cn/3/library/venv.html>
 
-    ![](python环境移植_md_files/af6097b0-724f-11ee-9291-81a2f7769dad_20231024172826.jpeg?v=1&type=image&token=V1%3Ab0DxX47pmUj-ZT3HjOkbh8xRAlN3-UxtICVpmF3gOnI)
-
 5.  运行项目进行测试
 
-#### pip packages 安装包移植
+##### 2.2.1.2 pip packages 安装包移植
 
 1.  首先激活虚环境，导出环境：`pip freeze > requirements.txt`
 
@@ -146,9 +150,7 @@
 
 > **Python 离线项目迁移部署：**<https://zhuanlan.zhihu.com/p/114290069>
 
-#### pip wheel 失败解决办法：
-
-> **Python package 只有压缩格式如何转成 wheel 格式：**<https://blog.csdn.net/linkeeee/article/details/130618985>
+##### 2.2.1.3 pip wheel 失败解决办法
 
 1.  在[pypi](https://pypi.org/)使用 package 名称进行搜索，download 界面选择指定版本下载压缩文件
 
@@ -160,7 +162,9 @@
 
 5.  在生成的 dist 文件夹中查看生成的 wheel 文件
 
-### pyinstaller 打包移植
+    > **Python package 只有压缩格式如何转成 wheel 格式：**<https://blog.csdn.net/linkeeee/article/details/130618985>
+
+### 2.2.2 pyinstaller 打包移植
 
 1.  下载 pyinstaller
 
