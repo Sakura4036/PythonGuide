@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/patterns/gang%20of%20four/creational%20patterns/factory%20method/">
+        <link rel="canonical" href="https://github.com/Sakura4036/PythonGuide/guidelines/venv_move/">
       
       
-        <link rel="prev" href="../builder/">
+        <link rel="prev" href="../code_refactor/">
       
       
-        <link rel="next" href="../prototype/">
+        <link rel="next" href="../../standard/language_rules/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
-        <title>Factory Method Pattern - PythonGuide</title>
+        <title>环境移植 - PythonGuide</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -48,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#python" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -82,7 +87,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+    <a href="../.." title="PythonGuide" class="md-header__button md-logo" aria-label="PythonGuide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Factory Method Pattern
+              环境移植
             
           </span>
         </div>
@@ -182,7 +187,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -197,17 +202,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../guidelines/project_structure/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../project_structure/" class="md-tabs__link">
           
   
   项目开发
@@ -228,7 +237,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../standard/language_rules/" class="md-tabs__link">
+        <a href="../../standard/language_rules/" class="md-tabs__link">
           
   
   Python规范
@@ -244,7 +253,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../git/" class="md-tabs__link">
+      <a href="../../git/" class="md-tabs__link">
         
   
     
@@ -259,13 +268,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../patterns/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../patterns/patterns/" class="md-tabs__link">
           
   
   设计模式
@@ -281,7 +288,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../reference/" class="md-tabs__link">
+      <a href="../../reference/" class="md-tabs__link">
         
   
     
@@ -315,7 +322,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
+    <a href="../.." title="PythonGuide" class="md-nav__button md-logo" aria-label="PythonGuide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -344,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -361,6 +368,8 @@
       
   
   
+    
+  
   
     
     
@@ -370,12 +379,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -389,7 +398,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             项目开发
@@ -438,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/project_structure/" class="md-nav__link">
+      <a href="../project_structure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -458,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/logging/" class="md-nav__link">
+      <a href="../logging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/configuration/" class="md-nav__link">
+      <a href="../configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -498,7 +507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/document/" class="md-nav__link">
+      <a href="../document/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/code_lint/" class="md-nav__link">
+      <a href="../code_lint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -582,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/program_design/" class="md-nav__link">
+      <a href="../program_design/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -602,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../guidelines/code_refactor/" class="md-nav__link">
+      <a href="../code_refactor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -628,18 +637,20 @@
                 
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -653,7 +664,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             高级
@@ -664,9 +675,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../guidelines/venv_move/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    环境移植
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -675,6 +706,161 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    在线版
+  </a>
+  
+    <nav class="md-nav" aria-label="在线版">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    conda 版本
+  </a>
+  
+    <nav class="md-nav" aria-label="conda 版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    项目环境安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目环境移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-venv" class="md-nav__link">
+    2. 直接安装/venv 安装
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 直接安装/venv 安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    项目环境安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    项目环境移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    离线移植
+  </a>
+  
+    <nav class="md-nav" aria-label="离线移植">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    离线 python 安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    环境移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    &#x20;venv 打包移植
+  </a>
+  
+    <nav class="md-nav" aria-label=" venv 打包移植">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    直接环境打包移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-packages" class="md-nav__link">
+    pip packages 安装包移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-wheel" class="md-nav__link">
+    pip wheel 失败解决办法：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyinstaller" class="md-nav__link">
+    pyinstaller 打包移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -740,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../standard/language_rules/" class="md-nav__link">
+      <a href="../../standard/language_rules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -760,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../standard/style_rules/" class="md-nav__link">
+      <a href="../../standard/style_rules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -787,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../git/" class="md-nav__link">
+      <a href="../../git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -804,8 +990,6 @@
       
   
   
-    
-  
   
     
     
@@ -815,12 +999,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -834,7 +1018,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             设计模式
@@ -847,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../patterns/" class="md-nav__link">
+      <a href="../../patterns/patterns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -867,7 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../principles/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/principles/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -923,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-specific%20patterns/global%20object/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/python-specific%20patterns/global%20object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -943,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-specific%20patterns/prebound%20method/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/python-specific%20patterns/prebound%20method/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -963,7 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python-specific%20patterns/sentinel%20object/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/python-specific%20patterns/sentinel%20object/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,20 +1173,18 @@
                 
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
         
           
           <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
@@ -1016,7 +1198,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             创建型模式
@@ -1029,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../abstract%20factory/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/creational%20patterns/abstract%20factory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1049,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../builder/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/creational%20patterns/builder/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1067,16 +1249,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../patterns/gang%20of%20four/creational%20patterns/factory%20method/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,7 +1260,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1097,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../prototype/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/creational%20patterns/prototype/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1117,7 +1291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../singleton/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/creational%20patterns/singleton/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1181,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../structural%20patterns/composite/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/structural%20patterns/composite/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1201,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../structural%20patterns/decorator/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/structural%20patterns/decorator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1221,7 +1395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../structural%20patterns/flyweight/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/structural%20patterns/flyweight/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1285,7 +1459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../behavioral%20patterns/iterator/" class="md-nav__link">
+      <a href="../../patterns/gang%20of%20four/behavioral%20patterns/iterator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1320,7 +1494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../reference/" class="md-nav__link">
+      <a href="../../reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,6 +1524,151 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    在线版
+  </a>
+  
+    <nav class="md-nav" aria-label="在线版">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    conda 版本
+  </a>
+  
+    <nav class="md-nav" aria-label="conda 版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    项目环境安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    项目环境移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-venv" class="md-nav__link">
+    2. 直接安装/venv 安装
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 直接安装/venv 安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    项目环境安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    项目环境移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    离线移植
+  </a>
+  
+    <nav class="md-nav" aria-label="离线移植">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    离线 python 安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    环境移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    &#x20;venv 打包移植
+  </a>
+  
+    <nav class="md-nav" aria-label=" venv 打包移植">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    直接环境打包移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-packages" class="md-nav__link">
+    pip packages 安装包移植
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-wheel" class="md-nav__link">
+    pip wheel 失败解决办法：
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyinstaller" class="md-nav__link">
+    pyinstaller 打包移植
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1367,9 +1686,238 @@
   
 
 
-  <h1>Factory Method Pattern</h1>
-
-
+<h1 id="python">python 环境移植<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
+<h2 id="_1">在线版<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="conda">conda 版本<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h3>
+<h4 id="_2">项目环境安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>安装 conda 或者 miniconda：</p>
+<ul>
+<li>
+<p>添加到系统 PATH， 则命令行中可直接使用 conda 命令</p>
+</li>
+<li>
+<p>不添加到系统 PATH，则需要到安装目录下的 <code>Scripts</code> 下使用 activate 启动 conda</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创建对应的虚拟环境， 例如：<code>conda activate -n py39 python=3.9</code></p>
+</li>
+<li>
+<p>安装项目所需环境：&#x20;</p>
+<p><code>pip install -r requirements.txt</code> 或者直接一条一条安装</p>
+<ul>
+<li>
+<p>torch，github 等特殊包使用对应的语句进行安装:</p>
+</li>
+<li>
+<p><code>pip install torch==1.10.0 torchvision==0.11.0 torchaudio==0.11.0 -f https://download.pytorch.org/whl/torch_stable.html</code></p>
+</li>
+<li>
+<p><code>pip install torch-scatter==2.0.9 torch-sparse==0.6.13 torch-cluster==1.6.0 torch-spline-conv==1.2.1 torch-geometric==2.0.4 -f https://data.pyg.org/whl/torch-1.10.0+cpu.html</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>进入项目，运行: <code>python xxx.py</code></p>
+</li>
+<li>
+<p>若不存在<code>requirements.txt</code> ，导出<code>requirements.txt</code> ：</p>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</li>
+</ol>
+<h4 id="_3">项目环境移植<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>安装步骤同<code>项目环境安装</code>&#x20;</p>
+<h3 id="2-venv">2. 直接安装/venv 安装<a class="headerlink" href="#2-venv" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>conda 环境也可以使用 python3 安装 venv</strong></p>
+</blockquote>
+<h4 id="_4">项目环境安装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>安装指定版本 python，例如 python 3.9</p>
+<ul>
+<li>
+<p><a href="https://www.python.org/downloads/release/python-3913/">python 3.9.13</a>最后一个提供二进制安装程序的 python 版本</p>
+</li>
+<li>
+<p><a href="https://www.python.org/downloads/">python 3.9.14</a>及以上版本只提供源码安装： <code>setup.py install</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用 python 自带 venv 创建环境（也可不使用）：</p>
+<p><code>python -m venv py39</code></p>
+</li>
+<li>
+<p>激活 venv 环境：</p>
+<p><code>.\py39\Scripts\activate</code></p>
+</li>
+<li>
+<p>安装环境，<code>pip install -r requirements.txt</code> 或者直接一条一条安装</p>
+</li>
+<li>
+<p>进入项目，运行: <code>python xxx.py</code></p>
+</li>
+<li>
+<p>若不存在<code>requirements.txt</code> ，导出<code>requirements.txt</code> ：</p>
+<p><code>pip freeze &gt; requirements.txt</code></p>
+</li>
+</ol>
+<h4 id="_5">项目环境移植<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>安装步骤同**项目环境安装**</p>
+<h2 id="_6">离线移植<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="python_1">离线 python 安装<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>python 二进程程序下载</p>
+</li>
+<li>
+<p>python 源码安装</p>
+</li>
+</ol>
+<blockquote>
+<p>python 下载官网：<a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></p>
+</blockquote>
+<h3 id="_7">环境移植<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="venv">&#x20;venv 打包移植<a class="headerlink" href="#venv" title="Permanent link">&para;</a></h3>
+<h4 id="_8">直接环境打包移植<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>直接将原主机下安装的 venv 文件夹进行打包，例如 venv 环境 py39 打包成 py39.zip，发送至目标主机，项目文件夹下或者任意文件夹下解压</p>
+</li>
+<li>
+<p><strong>修改 venv 启动脚本</strong>：</p>
+<p><code>venv</code>的启动文件<code>activate、activate.bat、activate.sh</code>里，<code>python SDK</code>的<code>PATH</code>设置的是原<code>python SDK</code>的环境，项目移动后，需要更新这几个文件里的<code>PATH</code>变量</p>
+<ul>
+<li>
+<p>windows：需要修改<code>venv\Scripts</code>下的<code>Activate</code>和<code>activate.bat</code>两个文件中的<code>$env:VIRTUAL_ENV</code>,改成当前工程的<code>venv</code>路径</p>
+</li>
+<li>
+<p>需要修改<code>venv\bin</code>下的<code>Activate</code>文件中的<code>$env:VIRTUAL_ENV</code>,改成当前工程的<code>venv</code>路径</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>上述文件修改之后工程已经可以正常激活，但是如果安装了 pip 后的并不能用</strong></p>
+<ul>
+<li><strong>修改 pip 文件中的路径（一般在首行）为当前工程 venv 环境下的 python 路径</strong></li>
+</ul>
+</li>
+<li>
+<p>修改 venv 使用的基础 python 路径：<strong>进入 venv 文件夹，修改 pyvenv.cfg 文件中的 home 参数，指定该 venv 使用的 python</strong></p>
+<blockquote>
+<p>venv 文档：<a href="https://docs.python.org/zh-cn/3/library/venv.html">https://docs.python.org/zh-cn/3/library/venv.html</a></p>
+</blockquote>
+<p><img alt="" src="python环境移植_md_files/af6097b0-724f-11ee-9291-81a2f7769dad_20231024172826.jpeg?v=1&amp;type=image&amp;token=V1%3Ab0DxX47pmUj-ZT3HjOkbh8xRAlN3-UxtICVpmF3gOnI" /></p>
+</li>
+<li>
+<p>运行项目进行测试</p>
+</li>
+</ol>
+<h4 id="pip-packages">pip packages 安装包移植<a class="headerlink" href="#pip-packages" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>首先激活虚环境，导出环境：<code>pip freeze &gt; requirements.txt</code></p>
+</li>
+<li>
+<p>使用 pip 命令生成批量离线安装包（whl 文件）：<code>pip wheel --wheel-dir=./tmp/packages -r requirements.txt</code> ，检查/tmp/packages 中是否包含了项目所需的所有.whl。</p>
+<p><strong>如果运行报错，有部分包无法打包成 wheel：</strong></p>
+<ol>
+<li>
+<p>请先将这些错误包移除<code>requirements.txt</code> 然后重新执行<code>pip wheel --wheel-dir=./tmp/packages -r requirements.txt</code></p>
+</li>
+<li>
+<p>torch，torch_geometric 等相关包无法从 pip 下载可以使用以下命令：</p>
+<ol>
+<li>
+<p>写入 torch 等指定版本至**requirements_torch.txt**：</p>
+<blockquote>
+<p>torch==1.11.0+cu113\
+torchaudio==0.11.0+cu115\
+torchvision==0.12.0+cu113</p>
+</blockquote>
+</li>
+<li>
+<p>执行<code>pip wheel --wheel-dir=./tmp/packages -r requirements_torch.txt -f https://download.pytorch.org/whl/torch_stable.html</code></p>
+</li>
+<li>
+<p>写入 torch_geometric 等指定版本至**requirements_tgl.txt**：</p>
+<blockquote>
+<p>torch-cluster==1.6.0\
+torch-scatter==2.0.9\
+torch-sparse==0.6.13\
+torch-spline-conv==1.2.1\
+torch_geometric==2.4.0</p>
+</blockquote>
+</li>
+<li>
+<p>执行<code>pip wheel --wheel-dir=./tmp/packages -r requirements_tgl.txt -f https://download.pytorch.org/whl/torch_stable.html</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p>其他错误包参考下面的**pip wheel 失败解决办法，生成 whl 之后复制到**<code>./tmp/packages</code></p>
+</li>
+<li>
+<p>最后将错误的包及 torch，torch_geometric 等加入到<code>requirements.txt</code>中，即与原环境 freeze 得到的<code>requirements.txt</code> 内容一致</p>
+</li>
+</ol>
+</li>
+<li>
+<p>打包至目标主机，创建虚拟环境（前提以及装好 python）并激活：<code>python -m venv venv_name</code> ，<code>.\venv\Scripts\activate</code></p>
+</li>
+<li>
+<p>安装打包的依赖模块：<code>pip3 install --no-index --find-links=tmp/packages -r requirements.txt</code></p>
+</li>
+<li>
+<p>安装完毕，检查：<code>pip3 freeze</code> 或者运行项目检查</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Python 离线项目迁移部署：</strong><a href="https://zhuanlan.zhihu.com/p/114290069">https://zhuanlan.zhihu.com/p/114290069</a></p>
+</blockquote>
+<h4 id="pip-wheel">pip wheel 失败解决办法：<a class="headerlink" href="#pip-wheel" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p><strong>Python package 只有压缩格式如何转成 wheel 格式：</strong><a href="https://blog.csdn.net/linkeeee/article/details/130618985">https://blog.csdn.net/linkeeee/article/details/130618985</a></p>
+</blockquote>
+<ol>
+<li>
+<p>在<a href="https://pypi.org/">pypi</a>使用 package 名称进行搜索，download 界面选择指定版本下载压缩文件</p>
+</li>
+<li>
+<p>解压，cmd 到当前解压文件夹（setup.py 所在目录）</p>
+</li>
+<li>
+<p>检查 package 的 setup.py 文件中的配置是否正确：<code>python setup.py check</code></p>
+</li>
+<li>
+<p>生成 wheel：<code>python setup.py sdist bdist_wheel || true</code></p>
+</li>
+<li>
+<p>在生成的 dist 文件夹中查看生成的 wheel 文件</p>
+</li>
+</ol>
+<h3 id="pyinstaller">pyinstaller 打包移植<a class="headerlink" href="#pyinstaller" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>下载 pyinstaller</p>
+</li>
+<li>
+<p>项目打包配置</p>
+</li>
+<li>
+<p>运行打包命令</p>
+</li>
+<li>
+<p>复杂至目标主机</p>
+</li>
+<li>
+<p>解压运行</p>
+</li>
+</ol>
 
 
 
@@ -1408,10 +1956,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "search.highlight", "navigation.tracking"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
       
     
   </body>
